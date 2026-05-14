@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="vista-modulo"
+            stylesheets="@../css/estilos.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gimnasio.gympjv.MisReservasController">
+
+    <children>
+        <VBox spacing="14.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="32.0" right="32.0" top="22.0" />
+            </padding>
+            <children>
+                <Label styleClass="titulo-vista" text="Mis reservas" />
+
+                <TableView fx:id="tablaReservas" prefHeight="380.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="120.0" text="ID" />
+                        <TableColumn fx:id="colClase" prefWidth="260.0" text="Clase" />
+                        <TableColumn fx:id="colFecha" prefWidth="220.0" text="Fecha" />
+                        <TableColumn fx:id="colEstado" prefWidth="140.0" text="Estado" />
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#onCancelar"
+                                styleClass="btn-danger" text="Cancelar reserva" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
+               AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="14.0" />
+    </children>
+</AnchorPane>

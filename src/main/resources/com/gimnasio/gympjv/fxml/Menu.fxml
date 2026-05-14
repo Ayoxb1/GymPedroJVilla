@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane stylesheets="@../css/estilos.css" fx:id="root" prefHeight="700.0" prefWidth="1100.0" styleClass="root-menu"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gimnasio.gympjv.MenuController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="56.0" spacing="14.0" styleClass="topbar">
+            <padding>
+                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+            </padding>
+            <children>
+                <ImageView fitHeight="36.0" fitWidth="36.0" preserveRatio="true">
+                    <image><Image url="@../img/logo.png" /></image>
+                </ImageView>
+                <Label styleClass="topbar-titulo" text="Pedro J. Villa App" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblFecha" styleClass="topbar-fecha" text="-" />
+                <Label styleClass="topbar-usuario" text="Sesion:" />
+                <Label fx:id="lblUsuario" styleClass="topbar-usuario-nombre" text="-" />
+                <Label fx:id="lblRol" styleClass="topbar-rol-valor" text="-" />
+                <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion"
+                        styleClass="btn-cerrar-sesion" text="Cerrar sesion" />
+            </children>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefWidth="195.0" spacing="4.0" styleClass="sidebar">
+            <padding>
+                <Insets bottom="16.0" left="12.0" right="12.0" top="12.0" />
+            </padding>
+            <children>
+                <Label styleClass="sidebar-seccion" text="GESTION" />
+                <Button fx:id="btnSocios" mnemonicParsing="false" onAction="#onSocios"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Socios" />
+                <Button fx:id="btnEmpleados" mnemonicParsing="false" onAction="#onEmpleados"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Empleados" />
+                <Button fx:id="btnSuscripciones" mnemonicParsing="false" onAction="#onSuscripciones"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Suscripciones" />
+                <Button fx:id="btnCuotas" mnemonicParsing="false" onAction="#onCuotas"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Cuotas" />
+
+                <Label styleClass="sidebar-seccion" text="ACTIVIDAD" />
+                <Button fx:id="btnClases" mnemonicParsing="false" onAction="#onClases"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Clases grupales" />
+                <Button fx:id="btnAsistencia" mnemonicParsing="false" onAction="#onAsistencia"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Asistencia" />
+                <Button fx:id="btnSesionesPersonales" mnemonicParsing="false" onAction="#onSesionesPersonales"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Sesiones personales" />
+                <Button fx:id="btnReservas" mnemonicParsing="false" onAction="#onReservas"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Reservas" />
+
+                <Label styleClass="sidebar-seccion" text="SERVICIOS" />
+                <Button fx:id="btnPeluqueria" mnemonicParsing="false" onAction="#onPeluqueria"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Peluqueria" />
+                <Button fx:id="btnTienda" mnemonicParsing="false" onAction="#onTienda"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Tienda / TPV" />
+                <Button fx:id="btnStock" mnemonicParsing="false" onAction="#onStock"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Stock" />
+
+                <Label styleClass="sidebar-seccion" text="HERRAMIENTAS" />
+                <Button fx:id="btnReportes" mnemonicParsing="false" onAction="#onReportes"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Reportes" />
+                <Button fx:id="btnAccesoQR" mnemonicParsing="false" onAction="#onAccesoQR"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Acceso QR" />
+                <Button fx:id="btnConfiguracion" mnemonicParsing="false" onAction="#onConfiguracion"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Configuracion" />
+                <Button fx:id="btnBackup" mnemonicParsing="false" onAction="#onBackup"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Copia de seguridad" />
+            </children>
+        </VBox>
+    </left>
+
+    <bottom>
+        <AnchorPane prefHeight="28.0" styleClass="footer">
+            <children>
+                <Label styleClass="marca-agua-footer" text="Ayoub Atidi Belbaz"
+                       AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0" />
+            </children>
+        </AnchorPane>
+    </bottom>
+</BorderPane>

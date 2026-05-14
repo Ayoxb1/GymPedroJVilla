@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="vista-modulo"
+            stylesheets="@../css/estilos.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gimnasio.gympjv.MiDietaController">
+
+    <children>
+        <VBox spacing="14.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="32.0" right="32.0" top="22.0" />
+            </padding>
+            <children>
+                <Label styleClass="titulo-vista" text="Mi plan de dieta" />
+
+                <Label fx:id="lblSinPlan" styleClass="info-texto"
+                       text="" wrapText="true" />
+
+                <VBox spacing="0" styleClass="card-oscura">
+                    <padding>
+                        <Insets bottom="16.0" left="22.0" right="22.0" top="16.0" />
+                    </padding>
+                    <children>
+                        <GridPane hgap="20.0" vgap="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="160.0" />
+                                <ColumnConstraints />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                            </rowConstraints>
+
+                            <Label styleClass="campo-titulo" text="ID Plan:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <Label fx:id="lblIdPlan" styleClass="campo-valor" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                            <Label styleClass="campo-titulo" text="Monitor asignado:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <Label fx:id="lblMonitor" styleClass="campo-valor-dorado" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                            <Label styleClass="campo-titulo" text="Calorias objetivo:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <Label fx:id="lblCalorias" styleClass="campo-valor" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        </GridPane>
+                    </children>
+                </VBox>
+
+                <Label styleClass="subtitulo-vista" text="Comidas del plan" />
+
+                <TableView fx:id="tablaComidas" prefHeight="280.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colDia" prefWidth="160.0" text="Dia" />
+                        <TableColumn fx:id="colDescripcion" prefWidth="500.0" text="Descripcion" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+
+        <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
+               AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="14.0" />
+    </children>
+</AnchorPane>

@@ -1,0 +1,586 @@
+/* ==========================================================================
+   Pedro J. Villa App - Tema negro/dorado
+   Autor: Ayoub Atidi Belbaz - 1 DAM
+
+   Paleta:
+     - Negro / gris oscuro: #0a0a0a, #141414, #1c1c1c, #232323
+     - Dorado:              #d4af37
+     - Texto claro:         #f1f1f1, #b5b5b5
+   ========================================================================== */
+
+* {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ==========================================================================
+   MARCA DE AGUA
+   ========================================================================== */
+.marca-agua {
+    -fx-text-fill: rgba(212, 175, 55, 0.45);
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}
+
+.marca-agua-footer {
+    -fx-text-fill: rgba(212, 175, 55, 0.55);
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}
+
+/* ==========================================================================
+   LOGIN
+   ========================================================================== */
+.root-login {
+    -fx-background-color: #0a0a0a;
+}
+
+.titulo-app {
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+}
+
+.subtitulo-app {
+    -fx-text-fill: #b5b5b5;
+    -fx-font-size: 15px;
+}
+
+.caja-login {
+    -fx-background-color: #141414;
+    -fx-background-radius: 8;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.login-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d4af37;
+}
+
+.input-login {
+    -fx-pref-height: 36px;
+    -fx-font-size: 13px;
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #333333;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #f1f1f1;
+    -fx-prompt-text-fill: #777777;
+    -fx-padding: 4 10 4 10;
+}
+
+.input-login:focused {
+    -fx-border-color: #d4af37;
+    -fx-background-color: #232323;
+}
+
+.hint-login {
+    -fx-text-fill: #888888;
+    -fx-font-size: 11px;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+.btn-primary {
+    -fx-background-color: #d4af37;
+    -fx-text-fill: #0a0a0a;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+.btn-primary:hover {
+    -fx-background-color: #e6c247;
+}
+
+.btn-secondary {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #d4af37;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+    -fx-padding: 7 15 7 15;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.btn-danger {
+    -fx-background-color: #8b0000;
+    -fx-text-fill: #f1f1f1;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+.btn-danger:hover {
+    -fx-background-color: #a00000;
+}
+
+.btn-warning {
+    -fx-background-color: #8b6f1a;
+    -fx-text-fill: #f1f1f1;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 4;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+.btn-warning:hover {
+    -fx-background-color: #a4831e;
+}
+
+.btn-cerrar-sesion {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d4af37;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+}
+.btn-cerrar-sesion:hover {
+    -fx-background-color: rgba(212, 175, 55, 0.15);
+}
+
+/* ==========================================================================
+   MENU - topbar y sidebar
+   ========================================================================== */
+.root-menu {
+    -fx-background-color: #0a0a0a;
+}
+
+.topbar {
+    -fx-background-color: #141414;
+    -fx-border-color: transparent transparent #d4af37 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.topbar-titulo {
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.topbar-usuario,
+.topbar-rol {
+    -fx-text-fill: #888888;
+    -fx-font-size: 12px;
+}
+
+.topbar-usuario-nombre,
+.topbar-rol-valor {
+    -fx-text-fill: #f1f1f1;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.topbar-fecha {
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 14 0 0;
+}
+
+.check-recordarme {
+    -fx-text-fill: #b5b5b5;
+    -fx-font-size: 12px;
+}
+.check-recordarme .box {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 2;
+    -fx-background-radius: 2;
+}
+.check-recordarme:selected .mark {
+    -fx-background-color: #d4af37;
+}
+
+.sidebar {
+    -fx-background-color: #141414;
+    -fx-border-color: transparent #d4af37 transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-seccion {
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 0 4 0;
+}
+
+.btn-sidebar {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-sidebar:hover {
+    -fx-background-color: #232323;
+    -fx-text-fill: #d4af37;
+}
+
+.footer {
+    -fx-background-color: #0a0a0a;
+    -fx-border-color: #d4af37 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==========================================================================
+   VISTAS DE MODULO
+   ========================================================================== */
+.vista-modulo {
+    -fx-background-color: #0a0a0a;
+}
+
+.titulo-vista {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d4af37;
+    -fx-padding: 0 0 6 0;
+}
+
+.subtitulo-vista {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d4af37;
+    -fx-padding: 4 0 4 0;
+}
+
+.dashboard-info {
+    -fx-font-size: 14px;
+    -fx-text-fill: #e0e0e0;
+    -fx-line-spacing: 4;
+}
+
+.dashboard-info-box {
+    -fx-background-color: #141414;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 1;
+}
+
+/* ==========================================================================
+   CARDS OSCURAS (datos socio, suscripcion, QR)
+   ========================================================================== */
+.card-oscura {
+    -fx-background-color: #141414;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 1;
+}
+
+.campo-titulo {
+    -fx-text-fill: #888888;
+    -fx-font-size: 13px;
+}
+
+.campo-valor {
+    -fx-text-fill: #f1f1f1;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.campo-valor-dorado {
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* ==========================================================================
+   TABLEVIEW
+   ========================================================================== */
+.table-view {
+    -fx-background-color: #141414;
+    -fx-border-color: #333333;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-table-cell-border-color: #232323;
+}
+.table-view .column-header {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: transparent transparent #d4af37 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.table-view .column-header .label {
+    -fx-text-fill: #d4af37;
+    -fx-font-weight: bold;
+}
+.table-view .table-row-cell {
+    -fx-background-color: #141414;
+    -fx-text-fill: #e0e0e0;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: #181818;
+}
+.table-view .table-row-cell:selected {
+    -fx-background-color: rgba(212, 175, 55, 0.25);
+    -fx-text-fill: #f1f1f1;
+}
+.table-view .table-cell {
+    -fx-text-fill: #e0e0e0;
+    -fx-border-color: transparent;
+}
+.table-view .table-cell:selected {
+    -fx-text-fill: #f1f1f1;
+}
+
+/* ==========================================================================
+   TPV
+   ========================================================================== */
+.total-tpv {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d4af37;
+    -fx-padding: 8 0 0 0;
+}
+
+/* ==========================================================================
+   REPORTES - KPI cards
+   ========================================================================== */
+.kpi-card {
+    -fx-background-color: #141414;
+    -fx-border-color: #d4af37;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 1;
+    -fx-padding: 16 18 16 18;
+}
+.kpi-card-detalle {
+    -fx-background-color: #141414;
+    -fx-border-color: #333333;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 1;
+    -fx-padding: 14 16 14 16;
+}
+.kpi-titulo {
+    -fx-font-size: 12px;
+    -fx-text-fill: #888888;
+    -fx-font-weight: bold;
+}
+.kpi-valor {
+    -fx-font-size: 26px;
+    -fx-text-fill: #d4af37;
+    -fx-font-weight: bold;
+}
+.kpi-detalle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #e0e0e0;
+    -fx-padding: 6 0 0 0;
+}
+
+/* ==========================================================================
+   QR
+   ========================================================================== */
+.qr-image {
+    -fx-effect: dropshadow(gaussian, rgba(212, 175, 55, 0.3), 8, 0, 0, 2);
+}
+.info-texto {
+    -fx-font-size: 13px;
+    -fx-text-fill: #b5b5b5;
+    -fx-text-alignment: center;
+}
+.resultado-qr {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #d4af37;
+    -fx-text-alignment: center;
+}
+
+.acceso-ok {
+    -fx-text-fill: #7dd87d;
+}
+.acceso-ko {
+    -fx-text-fill: #ff6b6b;
+}
+
+/* ==========================================================================
+   LABELS GENERALES dentro de vistas oscuras
+   ========================================================================== */
+.label {
+    -fx-text-fill: #e0e0e0;
+}
+
+/* ==========================================================================
+   BOTONES - ancho minimo uniforme
+   ========================================================================== */
+.btn-primary, .btn-secondary, .btn-danger, .btn-warning {
+    -fx-min-width: 110px;
+}
+
+/* ==========================================================================
+   INPUTS - TextField, TextArea, ComboBox, Spinner en tema oscuro
+   ========================================================================== */
+.text-field {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #333333;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #f1f1f1;
+    -fx-prompt-text-fill: #666666;
+    -fx-padding: 6 10 6 10;
+    -fx-pref-height: 34px;
+}
+.text-field:focused {
+    -fx-border-color: #d4af37;
+    -fx-background-color: #232323;
+}
+
+.text-area {
+    -fx-background-color: #141414;
+    -fx-border-color: #333333;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 12px;
+}
+.text-area .content {
+    -fx-background-color: #141414;
+}
+.text-area:focused {
+    -fx-border-color: #d4af37;
+}
+
+.combo-box {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #333333;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-pref-height: 34px;
+}
+.combo-box .list-cell {
+    -fx-text-fill: #f1f1f1;
+    -fx-background-color: transparent;
+    -fx-padding: 4 8 4 8;
+}
+.combo-box:focused, .combo-box:showing {
+    -fx-border-color: #d4af37;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #d4af37;
+    -fx-border-width: 1;
+}
+.combo-box-popup .list-cell {
+    -fx-text-fill: #e0e0e0;
+    -fx-background-color: #1c1c1c;
+    -fx-padding: 6 10 6 10;
+}
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #2a2a2a;
+    -fx-text-fill: #d4af37;
+}
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: rgba(212, 175, 55, 0.18);
+    -fx-text-fill: #d4af37;
+}
+
+.spinner {
+    -fx-background-color: #1c1c1c;
+    -fx-border-color: #333333;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-pref-height: 34px;
+}
+.spinner .text-field {
+    -fx-background-color: #1c1c1c;
+    -fx-text-fill: #f1f1f1;
+    -fx-border-color: transparent;
+    -fx-padding: 4 6 4 6;
+}
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #2a2a2a;
+    -fx-border-color: #444444;
+}
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: rgba(212, 175, 55, 0.25);
+}
+.spinner .increment-arrow,
+.spinner .decrement-arrow {
+    -fx-background-color: #d4af37;
+}
+
+/* ==========================================================================
+   BARRA DE ACCIONES (pie de tablas)
+   ========================================================================== */
+.action-bar {
+    -fx-padding: 10 0 0 0;
+    -fx-border-color: #232323 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==========================================================================
+   HINT / NOTA bajo tablas
+   ========================================================================== */
+.hint-tabla {
+    -fx-text-fill: #666666;
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}
+
+/* ==========================================================================
+   TPV KIOSCO - Botones de producto
+   ========================================================================== */
+.btn-kiosco {
+    -fx-background-color: #1c1c1c;
+    -fx-text-fill: #d4af37;
+    -fx-border-color: #3a3a3a;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-pref-width: 150px;
+    -fx-pref-height: 80px;
+    -fx-font-size: 12px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+    -fx-cursor: hand;
+}
+.btn-kiosco:hover {
+    -fx-background-color: rgba(212, 175, 55, 0.18);
+    -fx-border-color: #d4af37;
+}
+
+/* ==========================================================================
+   CALENDARIO SEMANAL
+   ========================================================================== */
+.calendario-grid {
+    -fx-background-color: #111111;
+}
+.cal-header {
+    -fx-text-fill: #d4af37;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 8 4 8;
+    -fx-background-color: #1e1e1e;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: center;
+}
+.cal-celda {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #2a2a2a;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+.cal-clase {
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 11px;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>run</actionName>
+        <goals>
+            <goal>clean</goal>
+            <goal>javafx:run</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>debug</actionName>
+        <goals>
+            <goal>clean</goal>
+            <goal>javafx:run</goal>
+        </goals>
+        <properties>
+            <jpda.listen>true</jpda.listen>
+            <javafx.options>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</javafx.options>
+        </properties>
+    </action>
+</actions>

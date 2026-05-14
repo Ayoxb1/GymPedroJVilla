@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane stylesheets="@../css/estilos.css" prefHeight="600.0" prefWidth="900.0" styleClass="vista-modulo"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gimnasio.gympjv.AsistenciaController">
+
+    <children>
+        <VBox spacing="12.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="24.0" right="24.0" top="20.0" />
+            </padding>
+            <children>
+                <Label styleClass="titulo-vista" text="Control de Asistencia" />
+
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Clase:" />
+                        <ComboBox fx:id="cmbClase" prefWidth="260.0" promptText="Selecciona clase..." />
+                        <Button mnemonicParsing="false" onAction="#onFiltrar"
+                                styleClass="btn-primary" text="Ver asistencia" />
+                        <Button mnemonicParsing="false" onAction="#onNuevaAsistencia"
+                                styleClass="btn-secondary" text="Registrar asistencia" />
+                    </children>
+                </HBox>
+
+                <TableView fx:id="tablaAsistencia" prefHeight="400.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId"      prefWidth="100.0" text="ID" />
+                        <TableColumn fx:id="colSocio"   prefWidth="200.0" text="Socio" />
+                        <TableColumn fx:id="colClase"   prefWidth="180.0" text="Clase" />
+                        <TableColumn fx:id="colFecha"   prefWidth="150.0" text="Fecha" />
+                        <TableColumn fx:id="colEstado"  prefWidth="100.0" text="Estado" />
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#onMarcarPresente"
+                                styleClass="btn-primary" text="Marcar presente" />
+                        <Button mnemonicParsing="false" onAction="#onMarcarAusente"
+                                styleClass="btn-danger"  text="Marcar ausente" />
+                        <Button mnemonicParsing="false" onAction="#onEliminar"
+                                styleClass="btn-secondary" text="Eliminar registro" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
+               AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="14.0" />
+    </children>
+</AnchorPane>

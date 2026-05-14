@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="560.0" prefWidth="700.0" styleClass="root-login"
+            stylesheets="@../css/estilos.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gimnasio.gympjv.InicioSesionController">
+
+    <children>
+        <VBox alignment="CENTER" prefHeight="560.0" prefWidth="700.0" spacing="14.0"
+              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <padding>
+                <Insets bottom="30.0" left="40.0" right="40.0" top="20.0" />
+            </padding>
+
+            <children>
+                <!-- Logo -->
+                <ImageView fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/logo.png" />
+                    </image>
+                </ImageView>
+
+                <Label styleClass="titulo-app" text="Pedro J. Villa App" />
+                <Label styleClass="subtitulo-app" text="Sistema de Gestion de Centro Deportivo" />
+
+                <VBox alignment="CENTER" maxWidth="340.0" spacing="12.0" styleClass="caja-login">
+                    <padding>
+                        <Insets bottom="22.0" left="24.0" right="24.0" top="22.0" />
+                    </padding>
+                    <children>
+                        <Label styleClass="login-label" text="Iniciar sesion" />
+                        <TextField fx:id="txtUsuario" promptText="Usuario" styleClass="input-login" />
+                        <PasswordField fx:id="txtPassword" promptText="Contrasena" styleClass="input-login" />
+
+                        <CheckBox fx:id="chkRecordarme" mnemonicParsing="false"
+                                  styleClass="check-recordarme" text="Recordarme" />
+
+                        <HBox alignment="CENTER" spacing="10.0">
+                            <children>
+                                <Button fx:id="btnEntrar" mnemonicParsing="false" onAction="#onEntrar"
+                                        prefWidth="140.0" styleClass="btn-primary" text="Iniciar Sesion" />
+                                <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#onSalir"
+                                        prefWidth="140.0" styleClass="btn-secondary" text="Salir" />
+                            </children>
+                        </HBox>
+
+                        <Label styleClass="hint-login"
+                               text="Admin: Ayoub / Uno234  |  Socio: Ayoub Atidi Belbaz / 1234"
+                               wrapText="true" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+
+        <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
+               AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="12.0" />
+    </children>
+</AnchorPane>
