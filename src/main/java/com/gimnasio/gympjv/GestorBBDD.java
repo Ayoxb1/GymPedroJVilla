@@ -192,7 +192,7 @@ public class GestorBBDD {
         // ── Credenciales admin ────────────────────────────────────
         s.execute(
             "INSERT INTO admins_extra VALUES ("
-            + "'ADM-001','Ayoub','Uno234')");
+            + "'ADM-001','Ayoub','1234')");
 
         // ── Credenciales monitores ────────────────────────────────
         s.execute(

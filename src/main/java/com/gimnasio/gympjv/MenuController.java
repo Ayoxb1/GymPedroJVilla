@@ -37,6 +37,7 @@ public class MenuController {
     @FXML private Button btnStock;
     @FXML private Button btnReportes;
     @FXML private Button btnAccesoQR;
+    @FXML private Button btnCalculadora;
     @FXML private Button btnConfiguracion;
     @FXML private Button btnBackup;
     @FXML private Button btnCerrarSesion;
@@ -139,6 +140,7 @@ public class MenuController {
     @FXML private void onStock(ActionEvent e)              { cargarVista("Stock"); }
     @FXML private void onReportes(ActionEvent e)           { cargarVista("Reportes"); }
     @FXML private void onAccesoQR(ActionEvent e)           { cargarVista("AccesoQR"); }
+    @FXML private void onCalculadora(ActionEvent e)        { cargarVista("Calculadora"); }
     @FXML private void onConfiguracion(ActionEvent e)      { cargarVista("Configuracion"); }
     @FXML private void onBackup(ActionEvent e)             { cargarVista("Backup"); }
 

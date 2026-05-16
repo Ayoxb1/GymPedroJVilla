@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Gestor de la conexion JDBC con MySQL (singleton de conexion).
- * Usuario: root / Clave: 2006 / BD: gympjv
+ * Gestion de la base de datos
+ * Usuario root; Clave 2006; BD gympjv
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class ConexionBBDD {
 

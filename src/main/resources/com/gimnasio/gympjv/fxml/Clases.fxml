@@ -36,6 +36,9 @@
                 <!-- Tabla de clases -->
                 <TableView fx:id="tablaClases"
                            prefHeight="200.0">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
                     <columns>
                         <TableColumn fx:id="colId"
                                      prefWidth="80.0"

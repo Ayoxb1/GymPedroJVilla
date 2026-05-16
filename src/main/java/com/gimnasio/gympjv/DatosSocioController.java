@@ -8,7 +8,7 @@ import modulos.FuncionesGraficas;
 import java.io.IOException;
 
 /**
- * Muestra los datos personales del socio en sesion.
+ * Muestra los datos personales del socio en sesion
  */
 public class DatosSocioController {
 

@@ -21,10 +21,20 @@ import java.util.Map;
  */
 public class GeneradorQR {
 
-    private static final int    ANCHO   = 300;
-    private static final int    ALTO    = 300;
-    private static final String CARPETA =
-        "src/main/resources/imagenes/qrs/";
+    private static final int ANCHO = 300;
+    private static final int ALTO  = 300;
+
+    /**
+     * Construye la ruta absoluta de la carpeta src/main/resources/imagenes/qrs
+     * a partir del directorio actual del proyecto (user.dir).
+     * De este modo funciona en Linux, Windows y Mac sin problemas de permisos.
+     */
+    private static Path carpetaQRs() {
+        return Paths.get(
+            System.getProperty("user.dir"),
+            "src", "main", "resources",
+            "imagenes", "qrs");
+    }
 
     /**
      * Genera un código QR en formato PNG y devuelve la ruta del fichero generado.
@@ -39,9 +49,8 @@ public class GeneradorQR {
             String apellido, boolean cuota)
             throws Exception {
         String contenido = "Nombre: "   + nombre
-            + "\nApellido: " + apellido
-            + "\nCuota: "   + cuota
-            + "\nNota: GymPJV";
+            + ", Apellido: " + apellido
+            + ", Cuota: "    + cuota;
 
         Map<EncodeHintType, Object> hints =
             new HashMap<>();
@@ -53,7 +62,8 @@ public class GeneradorQR {
                 BarcodeFormat.QR_CODE,
                 ANCHO, ALTO, hints);
 
-        Path carpeta = Paths.get(CARPETA);
+        // Carpeta dinamica relativa al proyecto, creada si no existe.
+        Path carpeta = carpetaQRs();
         Files.createDirectories(carpeta);
 
         String ts = LocalDateTime.now().format(
@@ -72,6 +82,8 @@ public class GeneradorQR {
         MatrixToImageWriter.writeToPath(
             matrix, "PNG", ruta);
 
-        return ruta.toAbsolutePath().toString();
+        // Devolvemos la ruta absoluta normalizada para que SociosController
+        // pueda persistirla en MySQL (qr_code) tanto en INSERT como UPDATE.
+        return ruta.toAbsolutePath().normalize().toString();
     }
 }

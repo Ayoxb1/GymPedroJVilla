@@ -34,6 +34,12 @@ public class ReportesController {
     @FXML private BarChart<String, Number> barChart;
     @FXML private PieChart                 pieChart;
 
+    // Paleta dorado/mostaza para forzar colores acordes al tema oscuro.
+    private static final String[] PALETA_ORO = {
+        "#d4af37", "#e6c247", "#b08a2a", "#8b6f1a",
+        "#c79a2e", "#f0d56b", "#a47e2c", "#6d5212"
+    };
+
     @FXML
     private void initialize() {
         if (SesionActual.getUsuario() == null) {
@@ -157,5 +163,33 @@ public class ReportesController {
         }
 
         barChart.getData().add(series);
+        forzarColoresDorados(series);
+    }
+
+    /**
+     * Aplica la paleta dorado/mostaza a cada barra y porcion del PieChart
+     * via setStyle, redundando los estilos CSS para asegurar que ningun
+     * color por defecto (naranja/verde/azul) sobreviva al render.
+     */
+    private void forzarColoresDorados(
+            XYChart.Series<String, Number> serie) {
+        int idx = 0;
+        for (XYChart.Data<String, Number> d : serie.getData()) {
+            String color = PALETA_ORO[idx % PALETA_ORO.length];
+            if (d.getNode() != null) {
+                d.getNode().setStyle(
+                    "-fx-bar-fill: " + color + ";");
+            }
+            idx++;
+        }
+        idx = 0;
+        for (PieChart.Data d : pieChart.getData()) {
+            String color = PALETA_ORO[idx % PALETA_ORO.length];
+            if (d.getNode() != null) {
+                d.getNode().setStyle(
+                    "-fx-pie-color: " + color + ";");
+            }
+            idx++;
+        }
     }
 }

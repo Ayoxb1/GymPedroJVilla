@@ -45,7 +45,11 @@ public class BackupController {
     private void onExportar() {
         String carpeta = ConfiguracionApp.getInstancia().getCarpetaBackup();
         String ts = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-        File archivo = new File(carpeta, "backup_socios_" + ts + ".csv");
+        File dirBackup = new File(carpeta);
+        if (!dirBackup.exists()) {
+            dirBackup.mkdirs();
+        }
+        File archivo = new File(dirBackup, "backup_socios_" + ts + ".csv");
 
         try (FileWriter fw = new FileWriter(archivo)) {
             fw.write("id;nombre;telefono;email;fechaAlta;qrCode;login\n");

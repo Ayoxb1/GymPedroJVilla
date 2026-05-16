@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Punto de entrada de la aplicacion Pedro J. Villa App.
+ * 
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class App extends Application {
 

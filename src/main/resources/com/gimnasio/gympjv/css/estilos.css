@@ -558,6 +558,99 @@
 }
 
 /* ==========================================================================
+   REPORTES - Graficas (BarChart / PieChart) en tema negro/dorado
+   ========================================================================== */
+.chart {
+    -fx-background-color: #141414;
+    -fx-padding: 6;
+}
+.chart-plot-background {
+    -fx-background-color: #141414;
+}
+.chart-content {
+    -fx-padding: 8;
+}
+.chart-title {
+    -fx-text-fill: #d4af37;
+    -fx-font-weight: bold;
+}
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #2a2a2a;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+}
+.chart-vertical-zero-line,
+.chart-horizontal-zero-line {
+    -fx-stroke: #444444;
+}
+.axis {
+    -fx-tick-label-fill: #f1f1f1;
+    -fx-tick-label-font-size: 11px;
+}
+.axis-label {
+    -fx-text-fill: #d4af37;
+    -fx-font-weight: bold;
+}
+.axis-tick-mark, .axis-minor-tick-mark {
+    -fx-stroke: #d4af37;
+}
+.axis:left .axis-tick-mark,
+.axis:bottom .axis-tick-mark {
+    -fx-stroke: #d4af37;
+}
+
+/* Leyendas: fondo oscuro, texto claro */
+.chart-legend {
+    -fx-background-color: #1c1c1c;
+    -fx-background-radius: 4;
+    -fx-padding: 6 10 6 10;
+}
+.chart-legend-item {
+    -fx-text-fill: #f1f1f1;
+}
+
+/* Etiquetas de pie chart */
+.chart-pie-label {
+    -fx-fill: #f1f1f1;
+}
+.chart-pie-label-line {
+    -fx-stroke: #d4af37;
+}
+
+/* Paleta dorado/mostaza forzada (series 0-7) */
+.default-color0.chart-bar { -fx-bar-fill: #d4af37; }
+.default-color1.chart-bar { -fx-bar-fill: #e6c247; }
+.default-color2.chart-bar { -fx-bar-fill: #b08a2a; }
+.default-color3.chart-bar { -fx-bar-fill: #8b6f1a; }
+.default-color4.chart-bar { -fx-bar-fill: #c79a2e; }
+.default-color5.chart-bar { -fx-bar-fill: #f0d56b; }
+.default-color6.chart-bar { -fx-bar-fill: #a47e2c; }
+.default-color7.chart-bar { -fx-bar-fill: #6d5212; }
+
+.default-color0.chart-pie { -fx-pie-color: #d4af37; }
+.default-color1.chart-pie { -fx-pie-color: #e6c247; }
+.default-color2.chart-pie { -fx-pie-color: #b08a2a; }
+.default-color3.chart-pie { -fx-pie-color: #8b6f1a; }
+.default-color4.chart-pie { -fx-pie-color: #c79a2e; }
+.default-color5.chart-pie { -fx-pie-color: #f0d56b; }
+.default-color6.chart-pie { -fx-pie-color: #a47e2c; }
+.default-color7.chart-pie { -fx-pie-color: #6d5212; }
+
+.chart-pie { -fx-border-color: #0a0a0a; }
+
+/* Simbolo de leyenda asociado a cada serie */
+.chart-legend-item-symbol.default-color0 { -fx-background-color: #d4af37, #d4af37; }
+.chart-legend-item-symbol.default-color1 { -fx-background-color: #e6c247, #e6c247; }
+.chart-legend-item-symbol.default-color2 { -fx-background-color: #b08a2a, #b08a2a; }
+.chart-legend-item-symbol.default-color3 { -fx-background-color: #8b6f1a, #8b6f1a; }
+.chart-legend-item-symbol.default-color4 { -fx-background-color: #c79a2e, #c79a2e; }
+.chart-legend-item-symbol.default-color5 { -fx-background-color: #f0d56b, #f0d56b; }
+.chart-legend-item-symbol.default-color6 { -fx-background-color: #a47e2c, #a47e2c; }
+.chart-legend-item-symbol.default-color7 { -fx-background-color: #6d5212, #6d5212; }
+
+/* ==========================================================================
    CALENDARIO SEMANAL
    ========================================================================== */
 .calendario-grid {

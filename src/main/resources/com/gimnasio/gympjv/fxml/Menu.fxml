@@ -25,7 +25,7 @@
                 <ImageView fitHeight="36.0" fitWidth="36.0" preserveRatio="true">
                     <image><Image url="@../img/logo.png" /></image>
                 </ImageView>
-                <Label styleClass="topbar-titulo" text="Pedro J. Villa App" />
+                <Label styleClass="topbar-titulo" text="Pedro J. Villa" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Label fx:id="lblFecha" styleClass="topbar-fecha" text="-" />
                 <Label styleClass="topbar-usuario" text="Sesion:" />
@@ -76,6 +76,8 @@
                         prefWidth="175.0" styleClass="btn-sidebar" text="Reportes" />
                 <Button fx:id="btnAccesoQR" mnemonicParsing="false" onAction="#onAccesoQR"
                         prefWidth="175.0" styleClass="btn-sidebar" text="Acceso QR" />
+                <Button fx:id="btnCalculadora" mnemonicParsing="false" onAction="#onCalculadora"
+                        prefWidth="175.0" styleClass="btn-sidebar" text="Calculadora" />
                 <Button fx:id="btnConfiguracion" mnemonicParsing="false" onAction="#onConfiguracion"
                         prefWidth="175.0" styleClass="btn-sidebar" text="Configuracion" />
                 <Button fx:id="btnBackup" mnemonicParsing="false" onAction="#onBackup"

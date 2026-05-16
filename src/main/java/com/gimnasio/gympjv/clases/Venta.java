@@ -102,9 +102,15 @@ public class Venta {
             sb.append(it.toString()).append("\n");
         }
         sb.append("--------------------\n");
-        sb.append("Subtotal: ").append(subtotal).append(" EUR\n");
-        sb.append("Descuento: ").append(descuento).append(" EUR\n");
-        sb.append("TOTAL: ").append(total).append(" EUR\n");
+        sb.append("Subtotal: ")
+          .append(String.format("%.2f", subtotal))
+          .append(" EUR\n");
+        sb.append("Descuento: ")
+          .append(String.format("%.2f", descuento))
+          .append(" EUR\n");
+        sb.append("TOTAL: ")
+          .append(String.format("%.2f", total))
+          .append(" EUR\n");
         sb.append("Pago: ").append(metodoPago).append("\n");
         return sb.toString();
     }
@@ -152,6 +158,7 @@ public class Venta {
     @Override
     public String toString() {
         String cli = (socio != null) ? socio.getNombre() : "Externo";
-        return "Venta " + idVenta + " - " + cli + " - " + total + " EUR - " + metodoPago;
+        return "Venta " + idVenta + " - " + cli + " - "
+             + String.format("%.2f", total) + " EUR - " + metodoPago;
     }
 }

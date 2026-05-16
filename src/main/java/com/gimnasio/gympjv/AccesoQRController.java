@@ -10,7 +10,6 @@ import modulos.FuncionesGraficas;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 public class AccesoQRController {
@@ -46,18 +45,35 @@ public class AccesoQRController {
         if (idx < 0) return;
         Socio s = socios.get(idx);
 
-        String home = System.getProperty("user.home");
-        String ruta = home + File.separator + "qr_" + s.getId() + ".png";
-        Path generado = QRUtil.generarQRSocio(s.getId(), ruta);
-        if (generado != null) {
+        // Usamos GeneradorQR (ruta dinamica src/main/resources/imagenes/qrs/)
+        // en vez de la ruta hardcodeada antigua a user.home.
+        String[] partes = s.getNombre().split(" ", 2);
+        String nom = partes[0];
+        String ape = "";
+        if (partes.length > 1) {
+            ape = partes[1];
+        }
+        boolean cuotaActiva = s.getSuscripcion() != null;
+        String rutaGenerada = null;
+        try {
+            GeneradorQR gen = new GeneradorQR();
+            rutaGenerada = gen.generarQR(nom, ape, cuotaActiva);
+            s.setQrCode(rutaGenerada);
+        } catch (Exception ex) {
+            rutaGenerada = null;
+        }
+        if (rutaGenerada != null) {
             try {
-                imgQR.setImage(new Image(generado.toUri().toString()));
+                imgQR.setImage(new Image(
+                    new File(rutaGenerada).toURI().toString()));
             } catch (Exception ignored) {}
-            lblResultado.setText("QR generado en: " + generado);
+            lblResultado.setText("QR generado en: " + rutaGenerada);
             FuncionesGraficas.mostrarMensaje("QR generado",
-                    "QR del socio " + s.getNombre() + " en:\n" + generado, 1);
+                    "QR del socio " + s.getNombre() + " en:\n"
+                    + rutaGenerada, 1);
         } else {
-            FuncionesGraficas.warning("Generar QR", "No se pudo generar el QR.");
+            FuncionesGraficas.warning("Generar QR",
+                "No se pudo generar el QR.");
         }
     }
 

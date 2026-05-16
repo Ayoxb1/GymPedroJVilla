@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane stylesheets="@../css/estilos.css"
@@ -17,139 +18,149 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.gimnasio.gympjv.EmpleadosController">
 
-    <!-- ── Tabla (panel izquierdo) ────────────────────────────────── -->
-    <TableView fx:id="tabla"
-               AnchorPane.leftAnchor="0.0"
-               AnchorPane.topAnchor="0.0"
-               AnchorPane.bottomAnchor="0.0"
-               AnchorPane.rightAnchor="362.0">
-        <columns>
-            <TableColumn fx:id="colId"
-                         prefWidth="68.0"  text="ID" />
-            <TableColumn fx:id="colNombre"
-                         prefWidth="120.0" text="Nombre" />
-            <TableColumn fx:id="colRol"
-                         prefWidth="72.0"  text="Rol" />
-            <TableColumn fx:id="colTelefono"
-                         prefWidth="86.0"  text="Telefono" />
-            <TableColumn fx:id="colEmail"
-                         prefWidth="100.0" text="Email" />
-            <TableColumn fx:id="colSalario"
-                         prefWidth="64.0"  text="Salario" />
-            <TableColumn fx:id="colHorario"
-                         prefWidth="60.0"  text="Turno" />
-        </columns>
-    </TableView>
+    <children>
+        <VBox spacing="12.0"
+              AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="24.0" right="24.0" top="20.0" />
+            </padding>
 
-    <!-- ── Formulario (panel derecho) ────────────────────────────── -->
-    <VBox spacing="7.0"
-          AnchorPane.leftAnchor="542.0"
-          AnchorPane.rightAnchor="0.0"
-          AnchorPane.topAnchor="0.0"
-          AnchorPane.bottomAnchor="0.0">
-        <padding>
-            <Insets bottom="14.0" left="14.0"
-                    right="14.0" top="14.0" />
-        </padding>
+            <Label styleClass="titulo-vista" text="Gestion de Empleados" />
 
-        <Label styleClass="titulo-vista"
-               text="Gestion de Empleados" />
+            <!-- ── Cuerpo: dos columnas (tabla ~60% / formulario ~40%) ── -->
+            <HBox spacing="20.0" VBox.vgrow="ALWAYS">
 
-        <!-- Campos de datos -->
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="ID:" />
-            <TextField fx:id="campoId"
-                       prefWidth="220.0" editable="false"
-                       styleClass="campo-readonly" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Nombre:" />
-            <TextField fx:id="campoNombre"
-                       prefWidth="220.0" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Telefono:" />
-            <TextField fx:id="campoTelefono"
-                       prefWidth="220.0" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Email:" />
-            <TextField fx:id="campoEmail"
-                       prefWidth="220.0" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Salario EUR:" />
-            <TextField fx:id="campoSalario"
-                       prefWidth="220.0" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Turno:" />
-            <TextField fx:id="campoHorario"
-                       prefWidth="220.0"
-                       promptText="MANANA / TARDE / NOCHE" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Tipo:" />
-            <TextField fx:id="campoTipo"
-                       prefWidth="220.0"
-                       promptText="ADMIN / MONITOR / EMPLEADO" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Login:" />
-            <TextField fx:id="campoLogin"
-                       prefWidth="220.0" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Clave:" />
-            <TextField fx:id="campoClave"
-                       prefWidth="220.0" />
-        </HBox>
-        <HBox spacing="8.0" alignment="CENTER_LEFT">
-            <Label prefWidth="100.0" text="Especialidad:" />
-            <TextField fx:id="campoEspecialidad"
-                       prefWidth="220.0" />
-        </HBox>
+                <!-- ── Columna izquierda: tabla ────────────────────────── -->
+                <TableView fx:id="tabla"
+                           HBox.hgrow="ALWAYS"
+                           minWidth="360.0">
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                    <columns>
+                        <TableColumn fx:id="colId"
+                                     prefWidth="60.0"  text="ID" />
+                        <TableColumn fx:id="colNombre"
+                                     prefWidth="120.0" text="Nombre" />
+                        <TableColumn fx:id="colRol"
+                                     prefWidth="80.0"  text="Rol" />
+                        <TableColumn fx:id="colTelefono"
+                                     prefWidth="90.0"  text="Telefono" />
+                        <TableColumn fx:id="colEmail"
+                                     prefWidth="130.0" text="Email" />
+                        <TableColumn fx:id="colSalario"
+                                     prefWidth="70.0"  text="Salario" />
+                        <TableColumn fx:id="colHorario"
+                                     prefWidth="70.0"  text="Turno" />
+                    </columns>
+                </TableView>
 
-        <!-- Navegacion -->
-        <HBox spacing="6.0" alignment="CENTER_LEFT">
-            <Button mnemonicParsing="false"
-                    onAction="#onPrimero"
-                    styleClass="btn-secondary" text="|&lt;" />
-            <Button mnemonicParsing="false"
-                    onAction="#onAnterior"
-                    styleClass="btn-secondary" text="&lt;" />
-            <Button mnemonicParsing="false"
-                    onAction="#onSiguiente"
-                    styleClass="btn-secondary" text="&gt;" />
-            <Button mnemonicParsing="false"
-                    onAction="#onUltimo"
-                    styleClass="btn-secondary" text="&gt;|" />
-            <Label fx:id="campoRegistro"
-                   styleClass="hint-tabla"
-                   text="Registro 0 / 0" />
-        </HBox>
+                <!-- ── Columna derecha: formulario ─────────────────────── -->
+                <VBox spacing="8.0"
+                      prefWidth="320.0"
+                      minWidth="300.0"
+                      maxWidth="360.0">
 
-        <!-- CRUD -->
-        <HBox spacing="8.0">
-            <Button mnemonicParsing="false"
-                    onAction="#onNuevo"
-                    styleClass="btn-secondary"
-                    text="Nuevo" />
-            <Button mnemonicParsing="false"
-                    onAction="#onGuardar"
-                    styleClass="btn-primary"
-                    text="Guardar" />
-            <Button mnemonicParsing="false"
-                    onAction="#onEliminar"
-                    styleClass="btn-danger"
-                    text="Eliminar" />
-        </HBox>
+                    <Label styleClass="subtitulo-vista" text="Detalle del empleado" />
 
-        <Label fx:id="campoMensaje"
-               styleClass="hint-tabla" text="" />
-    </VBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="ID:" />
+                        <TextField fx:id="campoId"
+                                   HBox.hgrow="ALWAYS"
+                                   editable="false"
+                                   styleClass="campo-readonly" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Nombre:" />
+                        <TextField fx:id="campoNombre" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Telefono:" />
+                        <TextField fx:id="campoTelefono" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Email:" />
+                        <TextField fx:id="campoEmail" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Salario EUR:" />
+                        <TextField fx:id="campoSalario" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Turno:" />
+                        <TextField fx:id="campoHorario"
+                                   HBox.hgrow="ALWAYS"
+                                   promptText="MANANA / TARDE / NOCHE" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Tipo:" />
+                        <TextField fx:id="campoTipo"
+                                   HBox.hgrow="ALWAYS"
+                                   promptText="ADMIN / MONITOR / EMPLEADO" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Login:" />
+                        <TextField fx:id="campoLogin" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Clave:" />
+                        <TextField fx:id="campoClave" HBox.hgrow="ALWAYS" />
+                    </HBox>
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label prefWidth="100.0" text="Especialidad:" />
+                        <TextField fx:id="campoEspecialidad" HBox.hgrow="ALWAYS" />
+                    </HBox>
 
-    <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
-           AnchorPane.bottomAnchor="6.0"
-           AnchorPane.rightAnchor="14.0" />
+                    <Region VBox.vgrow="ALWAYS" />
+
+                    <!-- Navegacion paginada -->
+                    <HBox spacing="6.0" alignment="CENTER_LEFT">
+                        <Button mnemonicParsing="false"
+                                onAction="#onPrimero"
+                                styleClass="btn-secondary" text="|&lt;" />
+                        <Button mnemonicParsing="false"
+                                onAction="#onAnterior"
+                                styleClass="btn-secondary" text="&lt;" />
+                        <Button mnemonicParsing="false"
+                                onAction="#onSiguiente"
+                                styleClass="btn-secondary" text="&gt;" />
+                        <Button mnemonicParsing="false"
+                                onAction="#onUltimo"
+                                styleClass="btn-secondary" text="&gt;|" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="campoRegistro"
+                               styleClass="hint-tabla"
+                               text="Registro 0 / 0" />
+                    </HBox>
+
+                    <!-- Acciones CRUD -->
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Button mnemonicParsing="false"
+                                onAction="#onNuevo"
+                                styleClass="btn-secondary"
+                                text="Nuevo" />
+                        <Button mnemonicParsing="false"
+                                onAction="#onGuardar"
+                                styleClass="btn-primary"
+                                text="Guardar" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false"
+                                onAction="#onEliminar"
+                                styleClass="btn-danger"
+                                text="Eliminar" />
+                    </HBox>
+
+                    <Label fx:id="campoMensaje"
+                           styleClass="hint-tabla" text="" wrapText="true" />
+                </VBox>
+            </HBox>
+        </VBox>
+
+        <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
+               AnchorPane.bottomAnchor="6.0"
+               AnchorPane.rightAnchor="14.0" />
+    </children>
 </AnchorPane>

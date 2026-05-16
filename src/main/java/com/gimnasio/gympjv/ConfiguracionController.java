@@ -61,9 +61,9 @@ public class ConfiguracionController {
         if (!ok) return;
         ConfiguracionApp cfg = ConfiguracionApp.getInstancia();
         cfg.setNombreCentro("Pedro J. Villa");
-        cfg.setDireccion("Calle Deportiva, 10 - Madrid");
-        cfg.setTelefono("910000000");
-        cfg.setCarpetaBackup(System.getProperty("user.home"));
+        cfg.setDireccion("Carretera de Madrid, 47, 30500 Molina de Segura, Murcia");
+        cfg.setTelefono("868 05 20 10");
+        cfg.setCarpetaBackup(ConfiguracionApp.rutaBackupPorDefecto());
         initialize();
         FuncionesGraficas.mostrarMensaje("Configuracion", "Configuracion restablecida.", 1);
     }

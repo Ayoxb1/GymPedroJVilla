@@ -26,9 +26,9 @@ import java.util.UUID;
 
 /**
  * Controlador de clases grupales.
- * Muestra tabla de clases + vista de calendario semanal.
+ * Muestra la tabla de clases y la vista del calendario
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAm
  */
 public class ClasesController {
 
@@ -88,7 +88,7 @@ public class ClasesController {
         poblarCalendario();
     }
 
-    // ── Calendario semanal ─────────────────────────────────────────────────
+    //  Calendario semanal 
     private void poblarCalendario() {
         calendarioSemana.getChildren().clear();
 
@@ -145,7 +145,7 @@ public class ClasesController {
         }
     }
 
-    // ── CRUD ───────────────────────────────────────────────────────────────
+    // CRUD 
     @FXML
     private void onNueva() {
         String nombre = FuncionesGraficas.pedirDatos(
@@ -179,20 +179,35 @@ public class ClasesController {
         }
 
         Monitor m = monitores.get(idx);
-        String idClase = "CLA-"
-            + UUID.randomUUID()
-                   .toString()
-                   .substring(0, 5)
-                   .toUpperCase();
-        ClaseGrupal nueva = new ClaseGrupal(
-            idClase, nombre,
-            LocalDateTime.now().plusDays(1), m, aforo);
-        Repositorio.getInstancia().getClases().add(nueva);
-        m.anadirClase(nueva);
+
+        // Repeticion semanal: 1 = solo la clase original, N = original + (N-1) copias
+        int semanas = FuncionesGraficas.pedirEntero(
+            "Repetir clase",
+            "Repetir durante cuantas semanas? (1 = solo esta)");
+        if (semanas <= 0) {
+            semanas = 1;
+        }
+
+        LocalDateTime fechaBase =
+            LocalDateTime.now().plusDays(1);
+        for (int i = 0; i < semanas; i++) {
+            String idClase = "CLA-"
+                + UUID.randomUUID()
+                       .toString()
+                       .substring(0, 5)
+                       .toUpperCase();
+            LocalDateTime fecha = fechaBase.plusDays(7L * i);
+            ClaseGrupal copia = new ClaseGrupal(
+                idClase, nombre, fecha, m, aforo);
+            Repositorio.getInstancia().getClases().add(copia);
+            m.anadirClase(copia);
+        }
+
         recargar();
         FuncionesGraficas.mostrarMensaje(
             "Clase creada",
-            "Clase " + nombre + " creada.", 1);
+            "Clase " + nombre + " creada ("
+                + semanas + " semana(s)).", 1);
     }
 
     @FXML

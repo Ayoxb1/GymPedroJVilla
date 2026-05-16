@@ -111,7 +111,7 @@ public class Repositorio {
         // ── Admin principal: Ayoub / 1234 ───────────────────────────────────────
         Admin ayoubAdmin = new Admin("ADM-001", "Ayoub Atidi Belbaz", "611000000",
                 "ayoub.admin@gym.com", LocalDate.of(2024, 1, 10),
-                2800.0, "MANANA", "Ayoub", "Uno234");
+                2800.0, "MANANA", "Ayoub", "1234");
         admins.add(ayoubAdmin);
         empleados.add(ayoubAdmin);
 

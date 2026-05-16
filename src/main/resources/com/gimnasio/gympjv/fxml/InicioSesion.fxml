@@ -60,7 +60,7 @@
                         </HBox>
 
                         <Label styleClass="hint-login"
-                               text="Admin: Ayoub / Uno234  |  Socio: Ayoub Atidi Belbaz / 1234"
+                               text="Admin: Ayoub / 1234  |  Socio: Ayoub Atidi Belbaz / 1234"
                                wrapText="true" />
                     </children>
                 </VBox>
