@@ -45,8 +45,7 @@ public class AccesoQRController {
         if (idx < 0) return;
         Socio s = socios.get(idx);
 
-        // Usamos GeneradorQR (ruta dinamica src/main/resources/imagenes/qrs/)
-        // en vez de la ruta hardcodeada antigua a user.home.
+        // uso GeneradorQR con ruta dinámica; antes estaba hardcodeada a user.home
         String[] partes = s.getNombre().split(" ", 2);
         String nom = partes[0];
         String ape = "";

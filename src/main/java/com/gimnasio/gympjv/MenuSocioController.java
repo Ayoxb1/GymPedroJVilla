@@ -24,9 +24,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Menu del socio (vista personal).
- * El socio puede consultar sus datos, suscripcion, dieta, reservas, QR
- * e historial. Tambien puede reservar/cancelar clases y comprar bonos.
+ * Menú del socio. Accede a sus datos, reservas, dieta, QR e historial.
  */
 public class MenuSocioController {
 
@@ -79,7 +77,6 @@ public class MenuSocioController {
         Label titulo = new Label("Bienvenido, " + (s != null ? s.getNombre() : "socio"));
         titulo.getStyleClass().add("titulo-vista");
 
-        // Stats del socio
         String estadoSus    = (s != null && s.getSuscripcion() != null)
                 ? s.getSuscripcion().getEstado().name() : "Sin suscripcion";
         String tipoSus      = (s != null && s.getSuscripcion() != null)
@@ -130,9 +127,7 @@ public class MenuSocioController {
     @FXML private void onQR(ActionEvent e)           { cargarVista("MiQR"); }
     @FXML private void onHistorial(ActionEvent e)    { cargarVista("MiHistorial"); }
 
-    /**
-     * Reservar una clase: el socio elige una clase con plazas y se inscribe.
-     */
+    /** Reserva una clase para el socio en sesión. */
     @FXML
     private void onReservar(ActionEvent e) {
         Socio s = SesionActual.getSocio();
@@ -151,7 +146,7 @@ public class MenuSocioController {
             return;
         }
 
-        // Listar clases con plazas, no llenas y futuras
+        // solo clases futuras con plazas libres
         Repositorio repo = Repositorio.getInstancia();
         List<ClaseGrupal> disponibles = repo.getClases().stream()
                 .filter(c -> !c.estaLlena())
@@ -189,9 +184,7 @@ public class MenuSocioController {
         }
     }
 
-    /**
-     * Comprar un bono de 10 o 20 sesiones.
-     */
+    /** Compra un bono de sesiones. */
     @FXML
     private void onComprarBono(ActionEvent e) {
         Socio s = SesionActual.getSocio();

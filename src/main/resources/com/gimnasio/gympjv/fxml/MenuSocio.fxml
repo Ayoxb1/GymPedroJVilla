@@ -11,10 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane stylesheets="@../css/estilos.css" fx:id="root" prefHeight="700.0" prefWidth="1100.0" styleClass="root-menu"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.gimnasio.gympjv.MenuSocioController">
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1100.0" styleClass="root-menu" stylesheets="@../css/estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gimnasio.gympjv.MenuSocioController">
 
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="56.0" spacing="14.0" styleClass="topbar">
@@ -25,14 +22,13 @@
                 <ImageView fitHeight="36.0" fitWidth="36.0" preserveRatio="true">
                     <image><Image url="@../img/logo.png" /></image>
                 </ImageView>
-                <Label styleClass="topbar-titulo" text="Pedro J. Villa App" />
+                <Label styleClass="topbar-titulo" text="Pedro J Villa" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Label fx:id="lblFecha" styleClass="topbar-fecha" text="-" />
                 <Label styleClass="topbar-usuario" text="Socio:" />
                 <Label fx:id="lblUsuario" styleClass="topbar-usuario-nombre" text="-" />
                 <Label fx:id="lblRol" styleClass="topbar-rol-valor" text="" />
-                <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion"
-                        styleClass="btn-cerrar-sesion" text="Cerrar sesion" />
+                <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion" styleClass="btn-cerrar-sesion" text="Cerrar sesion" />
             </children>
         </HBox>
     </top>
@@ -44,24 +40,16 @@
             </padding>
             <children>
                 <Label styleClass="sidebar-seccion" text="MI PERFIL" />
-                <Button fx:id="btnDatos" mnemonicParsing="false" onAction="#onDatos"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Mis datos" />
-                <Button fx:id="btnSuscripcion" mnemonicParsing="false" onAction="#onSuscripcion"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Mi suscripcion" />
-                <Button fx:id="btnDieta" mnemonicParsing="false" onAction="#onDieta"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Mi plan de dieta" />
+                <Button fx:id="btnDatos" mnemonicParsing="false" onAction="#onDatos" prefWidth="175.0" styleClass="btn-sidebar" text="Mis datos" />
+                <Button fx:id="btnSuscripcion" mnemonicParsing="false" onAction="#onSuscripcion" prefWidth="175.0" styleClass="btn-sidebar" text="Mi suscripcion" />
+                <Button fx:id="btnDieta" mnemonicParsing="false" onAction="#onDieta" prefWidth="175.0" styleClass="btn-sidebar" text="Mi plan de dieta" />
 
                 <Label styleClass="sidebar-seccion" text="ACTIVIDAD" />
-                <Button fx:id="btnReservar" mnemonicParsing="false" onAction="#onReservar"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Reservar clase" />
-                <Button fx:id="btnReservas" mnemonicParsing="false" onAction="#onReservas"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Mis reservas" />
-                <Button fx:id="btnComprarBono" mnemonicParsing="false" onAction="#onComprarBono"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Comprar bono" />
-                <Button fx:id="btnQR" mnemonicParsing="false" onAction="#onQR"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Mi codigo QR" />
-                <Button fx:id="btnHistorial" mnemonicParsing="false" onAction="#onHistorial"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Historial de compras" />
+                <Button fx:id="btnReservar" mnemonicParsing="false" onAction="#onReservar" prefWidth="175.0" styleClass="btn-sidebar" text="Reservar clase" />
+                <Button fx:id="btnReservas" mnemonicParsing="false" onAction="#onReservas" prefWidth="175.0" styleClass="btn-sidebar" text="Mis reservas" />
+                <Button fx:id="btnComprarBono" mnemonicParsing="false" onAction="#onComprarBono" prefWidth="175.0" styleClass="btn-sidebar" text="Comprar bono" />
+                <Button fx:id="btnQR" mnemonicParsing="false" onAction="#onQR" prefWidth="175.0" styleClass="btn-sidebar" text="Mi codigo QR" />
+                <Button fx:id="btnHistorial" mnemonicParsing="false" onAction="#onHistorial" prefWidth="175.0" styleClass="btn-sidebar" text="Historial de compras" />
             </children>
         </VBox>
     </left>
@@ -69,8 +57,7 @@
     <bottom>
         <AnchorPane prefHeight="28.0" styleClass="footer">
             <children>
-                <Label styleClass="marca-agua-footer" text="Ayoub Atidi Belbaz"
-                       AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0" />
+                <Label styleClass="marca-agua-footer" text="Ayoub Atidi Belbaz" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0" />
             </children>
         </AnchorPane>
     </bottom>

@@ -1,0 +1,326 @@
+# Diagrama de Clases — Dominio (GymPJV)
+
+## Jerarquía de herencia + clases principales
+
+```mermaid
+classDiagram
+    direction TB
+
+    %% ── HERENCIA ──────────────────────────────────────────────────────────────
+
+    class Persona {
+        <<abstract>>
+        #String id
+        #String nombre
+        #String telefono
+        #String email
+        #LocalDate fechaAlta
+        +getId() String
+        +getNombre() String
+        +setNombre(String)
+        +toString()* String
+    }
+
+    class Socio {
+        -String login
+        -String password
+        -String qrCode
+        -int puntos
+        -Suscripcion suscripcion
+        -PlanDieta planDieta
+        -List~Reserva~ reservas
+        -List~Venta~ historialVentas
+        +accederQR() boolean
+        +comprarBono(int) boolean
+        +comprobarPassword(String) boolean
+        +anadirReserva(Reserva)
+        +anadirVenta(Venta)
+        +consultarHistorial() List~Reserva~
+    }
+
+    class Empleado {
+        #double salarioBase
+        #String horario
+        +calcularNomina() double
+        +consultarHorario() String
+    }
+
+    class UsuarioSistema {
+        <<abstract>>
+        #String login
+        #String password
+        #RolUsuario rol
+        #boolean sesionActiva
+        +iniciarSesion() boolean
+        +cerrarSesion()
+        +comprobarPassword(String) boolean
+        +tienePermiso(String) boolean
+    }
+
+    class Admin {
+        +generarReportes()
+        +gestionarUsuarios()
+        +gestionarSocios()
+        +gestionarProductos()
+        +gestionarStock()
+    }
+
+    class Monitor {
+        -String especialidad
+        -List~ClaseGrupal~ clasesAsignadas
+        -List~PlanDieta~ planesDieta
+        +crearRutina(Socio)
+        +asignarDieta(Socio)
+        +registrarAsistencia(Socio)
+        +anadirClase(ClaseGrupal)
+    }
+
+    Persona      <|-- Socio
+    Persona      <|-- Empleado
+    Empleado     <|-- UsuarioSistema
+    UsuarioSistema <|-- Admin
+    UsuarioSistema <|-- Monitor
+
+    %% ── CLASES DE SERVICIO / ACTIVIDAD ───────────────────────────────────────
+
+    class Suscripcion {
+        -String idSuscripcion
+        -String tipoSuscripcion
+        -double importeMensual
+        -LocalDate fechaInicio
+        -LocalDate fechaFin
+        -int clasesIncluidas
+        -int sesionesConsumidas
+        -EstadoSuscripcion estado
+        -List~Mensualidad~ mensualidades
+        -List~BonoSesiones~ bonosAdicionales
+        +renovarSuscripcion()
+        +consumirClase() boolean
+        +cancelarSuscripcion()
+        +calcularSaldoClases() int
+        +verificarVencimiento() boolean
+        +generarFactura() String
+    }
+
+    class Mensualidad {
+        -String idMensualidad
+        -double importe
+        -LocalDate fechaVencimiento
+        -EstadoPago estado
+        +marcarPagada()
+        +renovar()
+        +estaVencida() boolean
+        +enviarRecordatorio()
+    }
+
+    class BonoSesiones {
+        -String idBono
+        -TipoBono tipo
+        -int sesionesRestantes
+        -LocalDate fechaExpiracion
+        +consumirSesion() boolean
+        +recargar()
+        +estaVencido() boolean
+    }
+
+    class ClaseGrupal {
+        -String idClase
+        -String nombre
+        -LocalDateTime fecha
+        -int aforoMaximo
+        -int ocupacionActual
+        -List~Reserva~ listaReservas
+        +anadirReserva(Reserva)
+        +eliminarReserva(Reserva)
+        +estaLlena() boolean
+        +getOcupacion() int
+    }
+
+    class Reserva {
+        -String idReserva
+        -LocalDateTime fecha
+        -EstadoReserva estado
+        +confirmar() boolean
+        +cancelar()
+        +consumirCreditos() boolean
+    }
+
+    class Asistencia {
+        -String idAsistencia
+        -LocalDateTime fechaHora
+        -boolean presente
+        +marcarPresente()
+        +marcarAusente()
+        +getEstadoTexto() String
+    }
+
+    class SesionPersonal {
+        -String idSesion
+        -LocalDateTime fecha
+        -int duracion
+        -String objetivos
+        -String intensidad
+        +programar(LocalDateTime)
+        +calcularPrecio() double
+        +modificarSesion()
+    }
+
+    class PlanDieta {
+        -String idPlan
+        -int calorias
+        -Map~String,String~ comidas
+        +anadirComida(String, String)
+        +calcularCalorias() int
+        +actualizarPlan()
+    }
+
+    class Peluqueria {
+        -String idServicio
+        -double precio
+        -List~String~ servicios
+        -LocalDateTime fechaHora
+        -boolean finalizado
+        +anadirServicio(String)
+        +calcularTotal() double
+        +finalizarCorte()
+        +imprimirTicket() String
+    }
+
+    class Venta {
+        -String idVenta
+        -double subtotal
+        -double descuento
+        -double total
+        -MetodoPago metodoPago
+        -LocalDateTime fechaHora
+        -boolean confirmada
+        +agregarItem(ItemVenta)
+        +calcularTotal()
+        +aplicarDescuento(Socio)
+        +confirmar() boolean
+        +generarTicket() String
+    }
+
+    class ItemVenta {
+        -int cantidad
+        -double precioUnitario
+        +calcularImporte() double
+    }
+
+    class Producto {
+        -String idProducto
+        -String nombre
+        -double precioVenta
+        -int stock
+        -int stockMinimo
+        +vender(int) boolean
+        +reponer(int)
+        +necesitaReponer() boolean
+    }
+
+    class GestorStock {
+        -List~Producto~ productos
+        +anadirProducto(Producto)
+        +eliminarProducto(Producto)
+        +checkAlertas() List~Producto~
+        +buscarPorId(String) Producto
+    }
+
+    class Reportes {
+        -List~Socio~ socios
+        -List~Venta~ ventas
+        -List~ClaseGrupal~ clases
+        -GestorStock gestorStock
+        +ingresosDiarios() double
+        +ingresosMensuales() double
+        +sociosActivos() int
+        +topProductos() List~Producto~
+        +ocupacionClases() Map~String,Integer~
+        +ventasTotales() double
+    }
+
+    %% ── ENUMS ─────────────────────────────────────────────────────────────────
+
+    class EstadoSuscripcion {
+        <<enumeration>>
+        ACTIVA
+        VENCIDA
+        CANCELADA
+    }
+
+    class EstadoPago {
+        <<enumeration>>
+        PENDIENTE
+        PAGADA
+        VENCIDA
+    }
+
+    class EstadoReserva {
+        <<enumeration>>
+        PENDIENTE
+        CONFIRMADA
+        CANCELADA
+    }
+
+    class TipoBono {
+        <<enumeration>>
+        BONO_10
+        BONO_20
+        +getSesiones() int
+    }
+
+    class RolUsuario {
+        <<enumeration>>
+        ADMIN
+        MONITOR
+    }
+
+    class MetodoPago {
+        <<enumeration>>
+        EFECTIVO
+        TARJETA
+        TRANSFERENCIA
+    }
+
+    %% ── RELACIONES ────────────────────────────────────────────────────────────
+
+    Socio         "1" --> "0..1" Suscripcion       : tiene
+    Socio         "1" --> "0..1" PlanDieta          : tiene
+    Socio         "1" --> "0..*" Reserva            : hace
+    Socio         "1" --> "0..*" Venta              : realiza
+
+    Suscripcion   "1" --> "0..*" Mensualidad        : genera
+    Suscripcion   "1" --> "0..*" BonoSesiones       : incluye
+    Suscripcion        -->       EstadoSuscripcion  : usa
+
+    Mensualidad        -->       EstadoPago         : usa
+    BonoSesiones       -->       TipoBono           : usa
+
+    Reserva       "1" --> "1"   Socio              : para
+    Reserva       "1" --> "1"   ClaseGrupal        : en
+    Reserva            -->      EstadoReserva      : usa
+
+    ClaseGrupal   "1" --> "1"   Monitor            : imparte
+    ClaseGrupal   "1" --> "0..*" Reserva           : tiene
+
+    Asistencia    "1" --> "1"   Socio              : de
+    Asistencia    "1" --> "1"   ClaseGrupal        : en
+
+    SesionPersonal "1" --> "1"  Socio              : para
+    SesionPersonal "1" --> "1"  Monitor            : con
+
+    PlanDieta     "1" --> "1"   Socio              : para
+    PlanDieta     "1" --> "1"   Monitor            : creado por
+
+    Peluqueria    "1" --> "1"   Socio              : para
+    Peluqueria    "1" --> "1"   Empleado           : por
+
+    Venta         "1" --> "1..*" ItemVenta         : contiene
+    Venta              -->       MetodoPago        : usa
+    ItemVenta     "1" --> "1"   Producto           : de
+
+    GestorStock   "1" --> "0..*" Producto          : gestiona
+    Reportes      "1" --> "1"   GestorStock        : usa
+
+    UsuarioSistema     -->      RolUsuario         : tiene
+```

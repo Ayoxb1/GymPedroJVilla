@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase grupal impartida por un monitor.
- * Tiene aforo maximo y lista de reservas (composite).
+ * Clase grupal con aforo máximo y lista de reservas.
  */
 public class ClaseGrupal {
 

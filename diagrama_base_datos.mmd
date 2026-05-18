@@ -1,0 +1,78 @@
+erDiagram
+    socios {
+        VARCHAR20  id            PK
+        VARCHAR100 nombre
+        VARCHAR20  telefono
+        VARCHAR100 email
+        DATE       fecha_alta
+        VARCHAR200 qr_code
+        VARCHAR50  login
+        VARCHAR50  password
+        INT        puntos
+    }
+
+    empleados {
+        VARCHAR20  id            PK
+        VARCHAR100 nombre
+        VARCHAR20  telefono
+        VARCHAR100 email
+        DATE       fecha_alta
+        DOUBLE     salario_base
+        VARCHAR20  horario
+        VARCHAR20  tipo
+    }
+
+    admins_extra {
+        VARCHAR20 id       PK
+        VARCHAR50 login
+        VARCHAR50 password
+    }
+
+    monitores_extra {
+        VARCHAR20  id          PK
+        VARCHAR50  login
+        VARCHAR50  password
+        VARCHAR100 especialidad
+    }
+
+    productos {
+        VARCHAR20  id_producto  PK
+        VARCHAR100 nombre
+        DOUBLE     precio_venta
+        INT        stock
+        INT        stock_minimo
+    }
+
+    suscripciones {
+        VARCHAR20 id              PK
+        VARCHAR20 id_socio        FK
+        VARCHAR50 tipo
+        DOUBLE    precio
+        DATE      fecha_inicio
+        DATE      fecha_fin
+        INT       clases_incluidas
+    }
+
+    clases_grupales {
+        VARCHAR20  id_clase        PK
+        VARCHAR100 nombre
+        DATETIME   fecha_hora
+        VARCHAR20  id_monitor      FK
+        INT        aforo_maximo
+        INT        ocupacion_actual
+    }
+
+    mensualidades {
+        VARCHAR20 id_mensualidad  PK
+        VARCHAR20 id_suscripcion  FK
+        DOUBLE    importe
+        DATE      fecha_vencimiento
+        VARCHAR20 estado
+    }
+
+    %% Relaciones
+    empleados      ||--o| admins_extra     : "extiende (Admin)"
+    empleados      ||--o| monitores_extra  : "extiende (Monitor)"
+    socios         ||--o{ suscripciones    : "tiene"
+    suscripciones  ||--o{ mensualidades    : "genera"
+    empleados      ||--o{ clases_grupales  : "imparte (monitor)"

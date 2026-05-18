@@ -18,25 +18,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Utilidad de generacion y lectura de codigos QR.
- * Cumple el requisito: el QR contiene SOLO un identificador corto del socio, no datos completos.
+ * Genera y lee QRs. El QR solo lleva el ID del socio, no datos personales.
  */
 public final class QRUtil {
 
     private static final int TAMANO_QR = 250;
 
-    private QRUtil() {
-        // Clase de utilidad - no instanciable
-    }
+    private QRUtil() {}
 
-    /**
-     * Genera un QR para un socio y lo guarda como PNG en la ruta indicada.
-     * El QR contiene unicamente el identificador del socio.
-     *
-     * @param idSocio identificador corto del socio
-     * @param rutaDestino ruta del fichero .png a generar
-     * @return ruta absoluta del fichero generado, o null si falla
-     */
+    /** Genera el QR del socio (solo lleva el ID) y lo guarda en rutaDestino. Null si falla. */
     public static Path generarQRSocio(String idSocio, String rutaDestino) {
         if (idSocio == null || idSocio.isEmpty() || rutaDestino == null) {
             return null;
@@ -56,12 +46,7 @@ public final class QRUtil {
         }
     }
 
-    /**
-     * Lee un fichero PNG con un QR y devuelve el contenido como String.
-     *
-     * @param rutaFichero ruta del PNG con el QR
-     * @return contenido del QR (idSocio) o null si no se puede leer
-     */
+    /** Lee el QR del PNG y devuelve su contenido (el ID del socio). Null si falla. */
     public static String leerQR(String rutaFichero) {
         if (rutaFichero == null) {
             return null;

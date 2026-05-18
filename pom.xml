@@ -11,9 +11,6 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Pedro J. Villa App</name>
-    <description>Sistema de Gestion de Centro Deportivo - Pedro J. Villa Fitness Club. Alumno: Ayoub Atidi Belbaz - 1 DAM</description>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
@@ -76,12 +73,10 @@
                 <configuration>
                     <mainClass>${main.class}</mainClass>
                     <options>
-                        <!-- cap heap so Linux OOM-killer does not SIGKILL the process -->
+                        <!-- limitar el uso de memoria para que el OOM-killer de Linux no cierre el proceso -->
                         <option>-Xms128m</option>
                         <option>-Xmx512m</option>
-                        <!-- Swing dialogs (FuncionesGraficas) require AWT display -->
                         <option>-Djava.awt.headless=false</option>
-                        <!-- suppress verbose GTK accessibility noise -->
                         <option>-Djavafx.verbose=false</option>
                     </options>
                 </configuration>

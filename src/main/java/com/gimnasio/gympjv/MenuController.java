@@ -16,8 +16,7 @@ import modulos.FuncionesGraficas;
 import java.io.IOException;
 
 /**
- * Controlador del menu principal.
- * Carga vistas de cada modulo en el area central segun el boton pulsado.
+ * Menú principal del admin/monitor. Cada botón carga su vista en el centro.
  */
 public class MenuController {
 
@@ -65,7 +64,7 @@ public class MenuController {
             lblFecha.setText(java.time.LocalDate.now()
                     .format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         }
-        // El monitor no ve gestion de empleados / reportes / stock
+        // el monitor no necesita ver empleados, reportes ni stock
         if (u != null && u.getRol() == RolUsuario.MONITOR) {
             btnEmpleados.setVisible(false);
             btnEmpleados.setManaged(false);
@@ -74,7 +73,6 @@ public class MenuController {
             btnStock.setVisible(false);
             btnStock.setManaged(false);
         }
-        // Cargar dashboard inicial
         cargarDashboard();
     }
 
@@ -85,11 +83,10 @@ public class MenuController {
         panel.getStyleClass().add("dashboard-info-box");
         panel.setPadding(new javafx.geometry.Insets(36, 40, 36, 40));
 
-        // Titulo
         javafx.scene.control.Label titulo = new javafx.scene.control.Label("Panel de control");
         titulo.getStyleClass().add("titulo-vista");
 
-        // Stats en grid informal
+        // stats del dashboard
         String[][] stats = {
             { "Socios registrados",    String.valueOf(r.getSocios().size()) },
             { "Socios activos",        String.valueOf(r.getReportes().sociosActivos()) },

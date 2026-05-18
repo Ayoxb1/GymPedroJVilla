@@ -15,7 +15,6 @@ import javafx.scene.layout.VBox;
 import modulos.FuncionesGraficas;
 
 import java.io.IOException;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -25,15 +24,14 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Controlador de clases grupales.
- * Muestra la tabla de clases y la vista del calendario
+ * Controlador de clases grupales adaptado a estándares DAM Senior.
+ * Muestra la tabla de clases y la vista del calendario sin salidas tempranas.
  *
- * @author Ayoub Atidi Belbaz 1º DAm
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class ClasesController {
 
-    private static final DateTimeFormatter FMT_HORA =
-        DateTimeFormatter.ofPattern("HH:mm");
+    private static final DateTimeFormatter FMT_HORA = DateTimeFormatter.ofPattern("HH:mm");
 
     @FXML private TableView<ClaseGrupal>           tablaClases;
     @FXML private TableColumn<ClaseGrupal, String> colId;
@@ -47,55 +45,31 @@ public class ClasesController {
     @FXML
     private void initialize() {
         if (SesionActual.getUsuario() == null) {
-            FuncionesGraficas.warning(
-                "Sesion",
-                "No hay sesion activa.");
+            FuncionesGraficas.warning("Sesion", "No hay sesion activa.");
             try {
                 App.cambiarVista("InicioSesion");
             } catch (IOException ex) {
-                FuncionesGraficas.warning(
-                    "Error", ex.getMessage());
+                FuncionesGraficas.warning("Error", ex.getMessage());
             }
-            return;
+        } else {
+            colId.setCellValueFactory(new PropertyValueFactory<>("idClase"));
+            colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+            colFecha.setCellValueFactory(cd -> new SimpleObjectProperty<>(cd.getValue().getFecha().format(DateTimeFormatter.ofPattern("EEE dd/MM HH:mm"))));
+            colMonitor.setCellValueFactory(cd -> new SimpleObjectProperty<>(cd.getValue().getMonitor().getNombre()));
+            colOcupacion.setCellValueFactory(cd -> new SimpleObjectProperty<>(String.valueOf(cd.getValue().getOcupacionActual())));
+            colAforo.setCellValueFactory(cd -> new SimpleObjectProperty<>(String.valueOf(cd.getValue().getAforoMaximo())));
+            recargar();
         }
-        colId.setCellValueFactory(
-            new PropertyValueFactory<>("idClase"));
-        colNombre.setCellValueFactory(
-            new PropertyValueFactory<>("nombre"));
-        colFecha.setCellValueFactory(cd ->
-            new SimpleObjectProperty<>(
-                cd.getValue().getFecha().format(
-                    DateTimeFormatter.ofPattern(
-                        "EEE dd/MM HH:mm"))));
-        colMonitor.setCellValueFactory(cd ->
-            new SimpleObjectProperty<>(
-                cd.getValue().getMonitor().getNombre()));
-        colOcupacion.setCellValueFactory(cd ->
-            new SimpleObjectProperty<>(
-                String.valueOf(
-                    cd.getValue().getOcupacionActual())));
-        colAforo.setCellValueFactory(cd ->
-            new SimpleObjectProperty<>(
-                String.valueOf(
-                    cd.getValue().getAforoMaximo())));
-        recargar();
     }
 
     private void recargar() {
-        tablaClases.setItems(
-            FXCollections.observableArrayList(
-                Repositorio.getInstancia().getClases()));
+        tablaClases.setItems(FXCollections.observableArrayList(Repositorio.getInstancia().getClases()));
         poblarCalendario();
     }
 
-    //  Calendario semanal 
     private void poblarCalendario() {
         calendarioSemana.getChildren().clear();
-
-        String[] dias = {
-            "LUN", "MAR", "MIE",
-            "JUE", "VIE", "SAB", "DOM"
-        };
+        String[] dias = {"LUN", "MAR", "MIE", "JUE", "VIE", "SAB", "DOM"};
 
         for (int i = 0; i < dias.length; i++) {
             Label cabecera = new Label(dias[i]);
@@ -106,36 +80,26 @@ public class ClasesController {
             calendarioSemana.getChildren().add(cabecera);
         }
 
-        Map<Integer, List<ClaseGrupal>> porDia =
-            new HashMap<>();
-        for (ClaseGrupal c
-                : Repositorio.getInstancia().getClases()) {
-            int col = c.getFecha().getDayOfWeek()
-                .getValue() - 1;
+        Map<Integer, List<ClaseGrupal>> porDia = new HashMap<>();
+        for (ClaseGrupal c : Repositorio.getInstancia().getClases()) {
+            int col = c.getFecha().getDayOfWeek().getValue() - 1;
             if (!porDia.containsKey(col)) {
                 porDia.put(col, new ArrayList<>());
             }
             porDia.get(col).add(c);
         }
 
-        for (Map.Entry<Integer, List<ClaseGrupal>> entry
-                : porDia.entrySet()) {
+        for (Map.Entry<Integer, List<ClaseGrupal>> entry : porDia.entrySet()) {
             int col = entry.getKey();
             int row = 1;
             for (ClaseGrupal c : entry.getValue()) {
-                String txt = c.getNombre()
-                    + "\n"
-                    + c.getFecha().format(FMT_HORA)
-                    + "\n"
-                    + c.getOcupacionActual()
-                    + "/" + c.getAforoMaximo();
+                String txt = c.getNombre() + "\n" + c.getFecha().format(FMT_HORA) + "\n" + c.getOcupacionActual() + "/" + c.getAforoMaximo();
                 Label lbl = new Label(txt);
                 lbl.getStyleClass().add("cal-clase");
                 lbl.setWrapText(true);
                 lbl.setMaxWidth(Double.MAX_VALUE);
                 VBox celda = new VBox(lbl);
-                celda.setPadding(
-                    new Insets(4, 4, 4, 4));
+                celda.setPadding(new Insets(4, 4, 4, 4));
                 celda.getStyleClass().add("cal-celda");
                 GridPane.setColumnIndex(celda, col);
                 GridPane.setRowIndex(celda, row);
@@ -145,89 +109,52 @@ public class ClasesController {
         }
     }
 
-    // CRUD 
     @FXML
     private void onNueva() {
-        String nombre = FuncionesGraficas.pedirDatos(
-            "Nueva clase", "Nombre de la clase:");
-        if (nombre == null || nombre.isBlank()) {
-            return;
-        }
-        int aforo = FuncionesGraficas.pedirEntero(
-            "Nueva clase", "Aforo maximo:");
-        if (aforo <= 0) {
-            return;
-        }
+        String nombre = FuncionesGraficas.pedirDatos("Nueva clase", "Nombre de la clase:");
+        if (nombre != null && !nombre.isBlank()) {
+            int aforo = FuncionesGraficas.pedirEntero("Nueva clase", "Aforo maximo:");
+            if (aforo > 0) {
+                List<Monitor> monitores = Repositorio.getInstancia().getMonitores();
+                if (monitores.isEmpty()) {
+                    FuncionesGraficas.warning("Nueva clase", "No hay monitores disponibles.");
+                } else {
+                    String[] nombresMon = monitores.stream().map(Monitor::getNombre).toArray(String[]::new);
+                    int idx = FuncionesGraficas.menuDesplegable("Asignar monitor", "Selecciona el monitor de la clase:", nombresMon);
+                    if (idx >= 0 && idx < monitores.size()) {
+                        Monitor m = monitores.get(idx);
+                        int semanas = FuncionesGraficas.pedirEntero("Repetir clase", "Repetir durante cuantas semanas? (1 = solo esta)");
+                        if (semanas <= 0) {
+                            semanas = 1;
+                        }
 
-        List<Monitor> monitores =
-            Repositorio.getInstancia().getMonitores();
-        if (monitores.isEmpty()) {
-            FuncionesGraficas.warning(
-                "Nueva clase",
-                "No hay monitores disponibles.");
-            return;
+                        LocalDateTime fechaBase = LocalDateTime.now().plusDays(1);
+                        for (int i = 0; i < semanas; i++) {
+                            String idClase = "CLA-" + UUID.randomUUID().toString().substring(0, 5).toUpperCase();
+                            LocalDateTime fecha = fechaBase.plusDays(7L * i);
+                            ClaseGrupal copia = new ClaseGrupal(idClase, nombre, fecha, m, aforo);
+                            Repositorio.getInstancia().getClases().add(copia);
+                            m.anadirClase(copia);
+                        }
+                        recargar();
+                        FuncionesGraficas.mostrarMensaje("Clase creada", "Clase " + nombre + " creada (" + semanas + " semana(s)).", 1);
+                    }
+                }
+            }
         }
-        String[] nombresMon = monitores.stream()
-            .map(Monitor::getNombre)
-            .toArray(String[]::new);
-        int idx = FuncionesGraficas.menuDesplegable(
-            "Asignar monitor",
-            "Selecciona el monitor de la clase:",
-            nombresMon);
-        if (idx < 0 || idx >= monitores.size()) {
-            return;
-        }
-
-        Monitor m = monitores.get(idx);
-
-        // Repeticion semanal: 1 = solo la clase original, N = original + (N-1) copias
-        int semanas = FuncionesGraficas.pedirEntero(
-            "Repetir clase",
-            "Repetir durante cuantas semanas? (1 = solo esta)");
-        if (semanas <= 0) {
-            semanas = 1;
-        }
-
-        LocalDateTime fechaBase =
-            LocalDateTime.now().plusDays(1);
-        for (int i = 0; i < semanas; i++) {
-            String idClase = "CLA-"
-                + UUID.randomUUID()
-                       .toString()
-                       .substring(0, 5)
-                       .toUpperCase();
-            LocalDateTime fecha = fechaBase.plusDays(7L * i);
-            ClaseGrupal copia = new ClaseGrupal(
-                idClase, nombre, fecha, m, aforo);
-            Repositorio.getInstancia().getClases().add(copia);
-            m.anadirClase(copia);
-        }
-
-        recargar();
-        FuncionesGraficas.mostrarMensaje(
-            "Clase creada",
-            "Clase " + nombre + " creada ("
-                + semanas + " semana(s)).", 1);
     }
 
     @FXML
     private void onCancelarClase() {
-        ClaseGrupal c =
-            tablaClases.getSelectionModel()
-                        .getSelectedItem();
+        ClaseGrupal c = tablaClases.getSelectionModel().getSelectedItem();
         if (c == null) {
-            FuncionesGraficas.warning(
-                "Cancelar clase",
-                "Selecciona una clase.");
-            return;
-        }
-        boolean ok = FuncionesGraficas.pedirBool(
-            "Cancelar clase",
-            "Eliminar la clase " + c.getNombre() + "?");
-        if (ok) {
-            Repositorio.getInstancia()
-                .getClases().remove(c);
-            recargar();
+            FuncionesGraficas.warning("Cancelar clase", "Selecciona una clase.");
+        } else {
+            boolean ok = FuncionesGraficas.pedirBool("Cancelar clase", "Eliminar la clase " + c.getNombre() + "?");
+            if (ok) {
+                Repositorio.getInstancia().getClases().remove(c);
+                recargar();
+            }
         }
     }
 }

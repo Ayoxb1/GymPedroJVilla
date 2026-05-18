@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Gestor de stock: agrupa los productos del catalogo y detecta los que necesitan reposicion.
+ * Lista de productos del catálogo y detección de stock bajo.
  */
 public class GestorStock {
 
@@ -35,12 +35,11 @@ public class GestorStock {
     }
 
     public void reponerStock() {
-        // En una implementacion real, se generaria un pedido al proveedor.
-        // Aqui delegamos en cada Producto.
+        // TODO: pendiente de implementar
     }
 
     public void notificarStockBajo() {
-        // Se notificaria al admin. La capa GUI lo orquestara.
+        // TODO: pendiente de implementar
     }
 
     public Producto buscarPorId(String idProducto) {

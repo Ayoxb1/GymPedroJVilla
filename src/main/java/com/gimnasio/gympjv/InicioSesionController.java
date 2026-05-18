@@ -16,12 +16,8 @@ import java.io.IOException;
 import java.util.prefs.Preferences;
 
 /**
- * Controlador del login.
- * Busca el login primero entre los UsuarioSistema (Admin/Monitor) y luego
- * entre los socios. Segun el tipo de cuenta, redirige a Menu o a MenuSocio.
- *
- * "Recordarme" guarda el usuario (no la contrasena) en las preferencias del SO
- * para autorrellenarlo la proxima vez.
+ * Login: primero busca UsuarioSistema (Admin/Monitor), si no busca Socio.
+ * "Recordarme" guarda solo el usuario en Preferences del SO.
  */
 public class InicioSesionController {
 
@@ -36,10 +32,10 @@ public class InicioSesionController {
 
     @FXML
     private void initialize() {
-        // Permite Enter en el campo password para iniciar sesion
+        // Enter en el campo contraseña también lanza el login
         txtPassword.setOnAction(this::onEntrar);
 
-        // Cargar usuario recordado si existe
+        // Cargo el usuario recordado si existe
         String recordado = prefs.get(PREF_USUARIO, null);
         if (recordado != null && !recordado.isBlank()) {
             txtUsuario.setText(recordado);
@@ -64,7 +60,7 @@ public class InicioSesionController {
 
         Repositorio repo = Repositorio.getInstancia();
 
-        // 1) Intentar como UsuarioSistema (Admin / Monitor)
+        // 1) Pruebo como UsuarioSistema (Admin / Monitor)
         UsuarioSistema u = repo.buscarUsuarioPorLogin(usuario.trim());
         if (u != null) {
             if (u.comprobarPassword(password)) {
@@ -85,7 +81,7 @@ public class InicioSesionController {
             return;
         }
 
-        // 2) Intentar como Socio
+        // 2) Pruebo como Socio
         Socio s = repo.buscarSocioPorLogin(usuario.trim());
         if (s != null) {
             if (s.comprobarPassword(password)) {

@@ -22,11 +22,10 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 /**
- * Gestion CRUD de socios.
- * Patron Agenda: vars estaticas, navegacion paginada,
- * formulario lateral conectado a TextFields (sin popups pedirDatos).
+ * CRUD de socios con patrón Agenda (vars estáticas, navegación por contReg,
+ * formulario lateral sin popups).
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class SociosController {
 
@@ -57,7 +56,6 @@ public class SociosController {
     @FXML private Label     campoRegistro;
     @FXML private Label     campoMensaje;
 
-    // ── initialize ─────────────────────────────────────────────────────────
     @FXML
     private void initialize() {
         if (SesionActual.getUsuario() == null) {
@@ -303,7 +301,7 @@ public class SociosController {
         campoMensaje.setText(msg);
     }
 
-    // ── Logica de modelo + persistencia ────────────────────────────────────
+    // ── Lógica ────────────────────────────────────────────────────────────
     private void crearSocio(String id, String nom,
             String tel, String em, String log,
             String clv, int puntos) {
@@ -313,7 +311,7 @@ public class SociosController {
             qr, log, clv);
         nuevo.setPuntos(puntos);
         Repositorio.getInstancia().getSocios().add(nuevo);
-        // Generar QR e intentar persistir
+        // genero el QR y actualizo qr_code
         String[] partes = nom.split(" ", 2);
         String n  = partes[0];
         String ap = "";
@@ -325,7 +323,7 @@ public class SociosController {
             String rutaQR = gen.generarQR(n, ap, false);
             nuevo.setQrCode(rutaQR);
         } catch (Exception ex) {
-            // si falla el QR se mantiene el valor por defecto
+            // si falla el QR queda el valor por defecto
         }
         insertarBBDD(nuevo);
     }
@@ -341,7 +339,7 @@ public class SociosController {
             s.setPassword(clv);
         }
         s.setPuntos(puntos);
-        // Regenerar QR para que la ruta refleje el dato actualizado.
+        // regenero el QR para que la ruta lleve el nombre actualizado
         String[] partes = nom.split(" ", 2);
         String n  = partes[0];
         String ap = "";
@@ -354,7 +352,7 @@ public class SociosController {
             String rutaQR = gen.generarQR(n, ap, cuotaActiva);
             s.setQrCode(rutaQR);
         } catch (Exception ex) {
-            // si falla el QR se conserva la ruta anterior
+            // si falla mantengo la ruta anterior
         }
         actualizarBBDD(s);
     }

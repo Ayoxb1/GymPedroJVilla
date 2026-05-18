@@ -23,10 +23,7 @@ public class BonoSesiones {
         this.fechaExpiracion = fechaExpiracion;
     }
 
-    /**
-     * Consume una sesion del bono.
-     * Devuelve true si quedaba al menos una sesion y se ha podido descontar.
-     */
+    /** Descuenta una sesión. Devuelve false si está vencido o ya vacío. */
     public boolean consumirSesion() {
         if (estaVencido()) {
             return false;

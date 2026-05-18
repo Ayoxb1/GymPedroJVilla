@@ -4,8 +4,7 @@ import com.gimnasio.gympjv.clases.enums.RolUsuario;
 import java.time.LocalDate;
 
 /**
- * Empleado con credenciales de acceso al sistema.
- * Solo Admin y Monitor extienden esta clase.
+ * Empleado con login/password. Solo Admin y Monitor la extienden.
  */
 public abstract class UsuarioSistema extends Empleado {
 
@@ -25,8 +24,7 @@ public abstract class UsuarioSistema extends Empleado {
     }
 
     public boolean tienePermiso(String permiso) {
-        // Por defecto, un usuario tiene los permisos derivados de su rol.
-        // Las subclases pueden afinarlo.
+        // de momento devuelve si tiene sesión activa, sin lógica de permisos fina
         return sesionActiva;
     }
 

@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 /**
- * Muestra la suscripcion del socio y el estado de su mensualidad.
+ * Pantalla de suscripción del socio logueado.
  */
 public class MiSuscripcionController {
 
@@ -37,7 +37,7 @@ public class MiSuscripcionController {
         lblEstado.setText(sus.getEstado().name());
         lblSaldoClases.setText(String.valueOf(sus.calcularSaldoClases()));
 
-        // Estado de la mensualidad mas reciente
+        // muestro la última mensualidad
         if (!sus.getMensualidades().isEmpty()) {
             Mensualidad ult = sus.getMensualidades().get(sus.getMensualidades().size() - 1);
             lblMensualidadEstado.setText(ult.getEstado().name());

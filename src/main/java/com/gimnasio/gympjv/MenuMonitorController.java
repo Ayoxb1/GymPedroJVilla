@@ -15,10 +15,10 @@ import java.io.IOException;
 
 public class MenuMonitorController {
 
-    // ── Monitor de sesion (patron datosEntrada) ────────────────────────────
+    // patrón datosEntrada: hay que llamar a esto antes de cargar la vista
     private static Monitor monitorActual = null;
 
-    /** Llamar desde InicioSesionController antes de cargar la vista. */
+    /** Llamar desde InicioSesionController antes de navegar aquí. */
     public static void datosEntrada(Monitor m) {
         monitorActual = m;
     }

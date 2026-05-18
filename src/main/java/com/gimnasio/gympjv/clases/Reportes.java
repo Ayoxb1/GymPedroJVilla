@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Servicio de generacion de informes.
- * Recibe por inyeccion las listas globales del sistema.
+ * Cálculos de reportes a partir de las listas del Repositorio.
  */
 public class Reportes {
 
@@ -73,8 +72,7 @@ public class Reportes {
     }
 
     public List<Producto> topProductos() {
-        // Ordenamos productos por unidades vendidas (stock minimo - stock actual no es real:
-        // contamos las ventas).
+        // ordeno por unidades vendidas sumando los items de las ventas confirmadas
         Map<Producto, Integer> contador = new HashMap<>();
         for (Venta v : ventas) {
             if (!v.isConfirmada()) continue;

@@ -14,26 +14,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane stylesheets="@../css/estilos.css"
-            prefHeight="660.0" prefWidth="900.0"
-            styleClass="vista-modulo"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.gimnasio.gympjv.ReportesController">
+<AnchorPane prefHeight="660.0" prefWidth="900.0" styleClass="vista-modulo" stylesheets="@../css/estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gimnasio.gympjv.ReportesController">
 
     <children>
-        <VBox spacing="10.0"
-              AnchorPane.bottomAnchor="0.0"
-              AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0"
-              AnchorPane.topAnchor="0.0">
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <padding>
-                <Insets bottom="16.0" left="24.0"
-                        right="24.0" top="16.0" />
+                <Insets bottom="16.0" left="24.0" right="24.0" top="16.0" />
             </padding>
             <children>
-                <Label styleClass="titulo-vista"
-                       text="Reportes y estadisticas" />
+                <Label styleClass="titulo-vista" text="Reportes y estadisticas" />
 
                 <!-- KPI cards -->
                 <GridPane hgap="12.0" vgap="8.0">
@@ -47,33 +36,21 @@
                         <RowConstraints />
                     </rowConstraints>
 
-                    <VBox styleClass="kpi-card"
-                          GridPane.columnIndex="0">
-                        <Label styleClass="kpi-titulo"
-                               text="Ingresos hoy" />
-                        <Label fx:id="lblIngresosHoy"
-                               styleClass="kpi-valor" text="-" />
+                    <VBox styleClass="kpi-card" GridPane.columnIndex="0">
+                        <Label styleClass="kpi-titulo" text="Ingresos De Hoy" />
+                        <Label fx:id="lblIngresosHoy" styleClass="kpi-valor" text="-" />
                     </VBox>
-                    <VBox styleClass="kpi-card"
-                          GridPane.columnIndex="1">
-                        <Label styleClass="kpi-titulo"
-                               text="Ingresos del mes" />
-                        <Label fx:id="lblIngresos"
-                               styleClass="kpi-valor" text="-" />
+                    <VBox styleClass="kpi-card" GridPane.columnIndex="1">
+                        <Label styleClass="kpi-titulo" text="Ingresos Mensuales" />
+                        <Label fx:id="lblIngresos" styleClass="kpi-valor" text="-" />
                     </VBox>
-                    <VBox styleClass="kpi-card"
-                          GridPane.columnIndex="2">
-                        <Label styleClass="kpi-titulo"
-                               text="Ventas totales" />
-                        <Label fx:id="lblTotal"
-                               styleClass="kpi-valor" text="-" />
+                    <VBox styleClass="kpi-card" GridPane.columnIndex="2">
+                        <Label styleClass="kpi-titulo" text="Ventas Totales" />
+                        <Label fx:id="lblTotal" styleClass="kpi-valor" text="-" />
                     </VBox>
-                    <VBox styleClass="kpi-card"
-                          GridPane.columnIndex="3">
-                        <Label styleClass="kpi-titulo"
-                               text="Socios activos" />
-                        <Label fx:id="lblSocios"
-                               styleClass="kpi-valor" text="-" />
+                    <VBox styleClass="kpi-card" GridPane.columnIndex="3">
+                        <Label styleClass="kpi-titulo" text="Socios Activos" />
+                        <Label fx:id="lblSocios" styleClass="kpi-valor" text="-" />
                     </VBox>
                 </GridPane>
 
@@ -82,31 +59,21 @@
 
                     <!-- BarChart: ingresos por tipo suscripcion -->
                     <VBox spacing="4.0" HBox.hgrow="ALWAYS">
-                        <Label styleClass="kpi-titulo"
-                               text="Ingresos por tipo suscripcion" />
-                        <BarChart fx:id="barChart"
-                                  animated="false"
-                                  VBox.vgrow="ALWAYS"
-                                  prefHeight="200.0">
+                        <Label styleClass="kpi-titulo" text="Ingresos por tipo suscripcion" />
+                        <BarChart fx:id="barChart" animated="false" prefHeight="200.0" VBox.vgrow="ALWAYS">
                             <xAxis>
                                 <CategoryAxis label="Tipo" />
                             </xAxis>
                             <yAxis>
-                                <NumberAxis label="EUR"
-                                            autoRanging="true" />
+                                <NumberAxis autoRanging="true" label="EUR" />
                             </yAxis>
                         </BarChart>
                     </VBox>
 
                     <!-- PieChart: distribucion de aforo por clase -->
                     <VBox spacing="4.0" HBox.hgrow="ALWAYS">
-                        <Label styleClass="kpi-titulo"
-                               text="Aforo por clase grupal" />
-                        <PieChart fx:id="pieChart"
-                                  animated="false"
-                                  labelsVisible="true"
-                                  VBox.vgrow="ALWAYS"
-                                  prefHeight="200.0" />
+                        <Label styleClass="kpi-titulo" text="Aforo por clase grupal" />
+                        <PieChart fx:id="pieChart" animated="false" labelsVisible="true" prefHeight="200.0" VBox.vgrow="ALWAYS" />
                     </VBox>
                 </HBox>
 
@@ -120,36 +87,22 @@
                         <RowConstraints />
                     </rowConstraints>
 
-                    <VBox styleClass="kpi-card-detalle"
-                          GridPane.columnIndex="0">
-                        <Label styleClass="kpi-titulo"
-                               text="Top productos vendidos" />
-                        <Label fx:id="lblTopProductos"
-                               styleClass="kpi-detalle"
-                               text="-" wrapText="true" />
+                    <VBox styleClass="kpi-card-detalle" GridPane.columnIndex="0">
+                        <Label styleClass="kpi-titulo" text="Productos Mas Vendidos" />
+                        <Label fx:id="lblTopProductos" styleClass="kpi-detalle" text="-" wrapText="true" />
                     </VBox>
-                    <VBox styleClass="kpi-card-detalle"
-                          GridPane.columnIndex="1">
-                        <Label styleClass="kpi-titulo"
-                               text="Productos bajo stock" />
-                        <Label fx:id="lblBajoStock"
-                               styleClass="kpi-detalle"
-                               text="-" wrapText="true" />
+                    <VBox styleClass="kpi-card-detalle" GridPane.columnIndex="1">
+                        <Label styleClass="kpi-titulo" text="Productos Apuntos de Agotarse" />
+                        <Label fx:id="lblBajoStock" styleClass="kpi-detalle" text="-" wrapText="true" />
                     </VBox>
                 </GridPane>
 
                 <HBox spacing="10.0">
-                    <Button mnemonicParsing="false"
-                            onAction="#onActualizar"
-                            styleClass="btn-primary"
-                            text="Actualizar" />
+                    <Button mnemonicParsing="false" onAction="#onActualizar" styleClass="btn-primary" text="Actualizar" />
                 </HBox>
             </children>
         </VBox>
 
-        <Label styleClass="marca-agua"
-               text="Ayoub Atidi Belbaz"
-               AnchorPane.bottomAnchor="6.0"
-               AnchorPane.rightAnchor="14.0" />
+        <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="14.0" />
     </children>
 </AnchorPane>

@@ -3,8 +3,8 @@ package com.gimnasio.gympjv.clases;
 import java.time.LocalDate;
 
 /**
- * Empleado del gimnasio. Concreta porque los peluqueros se instancian aqui.
- * Admin y Monitor heredaran a traves de UsuarioSistema.
+ * Empleado base. Los peluqueros se crean aquí directamente;
+ * Admin y Monitor heredan a través de UsuarioSistema.
  */
 public class Empleado extends Persona {
 

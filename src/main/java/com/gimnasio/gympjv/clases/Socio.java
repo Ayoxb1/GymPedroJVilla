@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Socio del gimnasio.
- * Datos propios: qrCode, puntos, login y password (para iniciar sesion como socio).
- * El resto se obtiene via las asociaciones (Suscripcion, PlanDieta, Reservas, Ventas).
+ * Socio del gimnasio. Tiene login propio (distinto del UsuarioSistema).
  */
 public class Socio extends Persona {
 
@@ -61,7 +59,7 @@ public class Socio extends Persona {
     }
 
     public void reservarClase() {
-        // Delegado al controlador.
+        // lo gestiona el controller
     }
 
     public boolean accederQR() {

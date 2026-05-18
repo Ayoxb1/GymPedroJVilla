@@ -1,0 +1,20 @@
+sequenceDiagram
+    actor Admin
+    participant AC  as AccesoQRController
+    participant QU  as QRUtil
+    participant REP as Repositorio
+    participant SOC as Socio
+
+    Admin ->> AC: seleccionar imagen PNG (FileChooser)
+    AC ->> QU: leerQR(ruta)
+    QU -->> AC: idSocio (String)
+    AC ->> REP: buscarSocioPorId(idSocio)
+    REP -->> AC: Socio
+    AC ->> SOC: accederQR()
+    alt suscripción activa
+        SOC -->> AC: true
+        AC ->> Admin: ACCESO PERMITIDO
+    else sin suscripción
+        SOC -->> AC: false
+        AC ->> Admin: ACCESO DENEGADO
+    end

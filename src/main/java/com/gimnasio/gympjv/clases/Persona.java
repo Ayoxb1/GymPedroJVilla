@@ -3,8 +3,7 @@ package com.gimnasio.gympjv.clases;
 import java.time.LocalDate;
 
 /**
- * Clase abstracta base de la jerarquia de personas del sistema.
- * Atributos comunes a Socio y Empleado (y por tanto a UsuarioSistema, Admin, Monitor).
+ * Base de la jerarquía: campos comunes de Socio, Empleado y sus subclases.
  */
 public abstract class Persona {
 

@@ -15,20 +15,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Generador de codigos QR en formato PNG para socios del gimnasio.
+ * Genera QRs en PNG para los socios.
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class GeneradorQR {
 
     private static final int ANCHO = 300;
     private static final int ALTO  = 300;
 
-    /**
-     * Construye la ruta absoluta de la carpeta src/main/resources/imagenes/qrs
-     * a partir del directorio actual del proyecto (user.dir).
-     * De este modo funciona en Linux, Windows y Mac sin problemas de permisos.
-     */
+    /** Ruta de la carpeta de QRs, calculada desde user.dir. */
     private static Path carpetaQRs() {
         return Paths.get(
             System.getProperty("user.dir"),
@@ -36,15 +32,7 @@ public class GeneradorQR {
             "imagenes", "qrs");
     }
 
-    /**
-     * Genera un código QR en formato PNG y devuelve la ruta del fichero generado.
-     *
-     * @param nombre   Nombre de la persona
-     * @param apellido Apellido de la persona
-     * @param cuota    Estado de cuota (true/false)
-     * @return Ruta absoluta del fichero QR generado
-     * @throws Exception
-     */
+    /** Genera el QR en PNG y devuelve la ruta absoluta del fichero. */
     public String generarQR(String nombre,
             String apellido, boolean cuota)
             throws Exception {
@@ -62,7 +50,6 @@ public class GeneradorQR {
                 BarcodeFormat.QR_CODE,
                 ANCHO, ALTO, hints);
 
-        // Carpeta dinamica relativa al proyecto, creada si no existe.
         Path carpeta = carpetaQRs();
         Files.createDirectories(carpeta);
 
@@ -82,8 +69,7 @@ public class GeneradorQR {
         MatrixToImageWriter.writeToPath(
             matrix, "PNG", ruta);
 
-        // Devolvemos la ruta absoluta normalizada para que SociosController
-        // pueda persistirla en MySQL (qr_code) tanto en INSERT como UPDATE.
+        // devuelvo la ruta absoluta para guardarla en qr_code de la BD
         return ruta.toAbsolutePath().normalize().toString();
     }
 }

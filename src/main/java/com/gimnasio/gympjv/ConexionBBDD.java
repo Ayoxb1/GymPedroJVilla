@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Gestion de la base de datos
- * Usuario root; Clave 2006; BD gympjv
+ * Conexión a MySQL (root/2006/gympjv).
  *
  * @author Ayoub Atidi Belbaz 1º DAM
  */
@@ -25,10 +24,7 @@ public class ConexionBBDD {
 
     private ConexionBBDD() { }
 
-    /**
-     * Devuelve la conexion activa, abriendola si es necesario.
-     * Devuelve null si MySQL no esta disponible.
-     */
+    /** Devuelve la conexión, la abre si no estaba. Null si MySQL no está disponible. */
     public static Connection getConexion() {
         if (conexion == null) {
             try {
@@ -50,7 +46,7 @@ public class ConexionBBDD {
         return conexion;
     }
 
-    /** Cierra la conexion activa de forma segura. */
+    /** Cierra la conexión. */
     public static void cerrarConexion() {
         if (conexion != null) {
             try {

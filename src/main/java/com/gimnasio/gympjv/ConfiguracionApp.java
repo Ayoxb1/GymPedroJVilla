@@ -5,12 +5,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Configuracion global del gym.
- * La carpeta de backup por defecto se construye dinamicamente a partir del
- * directorio actual del proyecto (user.dir) para que funcione igual en
- * Linux, Windows y Mac, y se crea al vuelo si no existe.
+ * Config del gimnasio. La carpeta de backup se calcula desde user.dir
+ * para que funcione en cualquier OS.
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class ConfiguracionApp {
 
@@ -30,10 +28,7 @@ public class ConfiguracionApp {
         return instancia;
     }
 
-    /**
-     * Devuelve la ruta absoluta de src/main/resources/copias_de_seguridad
-     * relativa al directorio del proyecto, creandola si no existe.
-     */
+    /** Ruta de backup relativa al proyecto, la crea si no existe. */
     public static String rutaBackupPorDefecto() {
         Path p = Paths.get(
             System.getProperty("user.dir"),
@@ -42,7 +37,7 @@ public class ConfiguracionApp {
         try {
             Files.createDirectories(p);
         } catch (Exception ex) {
-            // si falla la creacion se devuelve la ruta igualmente
+            // si falla la creación devuelvo la ruta igual
         }
         return p.toAbsolutePath().normalize().toString();
     }

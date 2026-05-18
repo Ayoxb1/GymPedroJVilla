@@ -12,13 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Repositorio en memoria. Singleton.
- * Centraliza el acceso a las listas globales del sistema y carga datos demo.
- *
- * Usuarios demo:
- *   - Admin:  Ayoub / 1234
- *   - Socio:  Ayoub Atidi Belbaz / 1234  (suscripcion activa, mensualidad pagada)
- *   - Otros:  laura / 1234, javier / 1234 (monitores)
+ * Singleton con todas las listas en memoria.
+ * Carga desde BD al arrancar; si falla, usa el demo.
+ * Credenciales demo: Ayoub/1234 (admin), Ayoub Atidi Belbaz/1234 (socio),
+ * laura/1234 y javier/1234 (monitores).
  */
 public class Repositorio {
 
@@ -45,10 +42,7 @@ public class Repositorio {
         this.reportes = new Reportes(socios, ventas, clases, gestorStock);
     }
 
-    /**
-     * Intenta cargar todos los datos desde MySQL.
-     * Si la conexion falla, hace fallback a cargarDemo().
-     */
+    /** Carga desde BD; si falla tira del demo en memoria. */
     private void cargarDesdeBBDD() {
         Connection c = ConexionBBDD.getConexion();
         boolean exito = false;

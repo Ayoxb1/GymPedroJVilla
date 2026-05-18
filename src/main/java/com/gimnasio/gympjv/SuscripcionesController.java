@@ -85,7 +85,7 @@ public class SuscripcionesController {
             FuncionesGraficas.warning("Pagar mensualidad", "Selecciona una suscripcion.");
             return;
         }
-        // Buscar mensualidad pendiente
+        // busco si hay alguna mensualidad pendiente
         Mensualidad pendiente = null;
         for (Mensualidad m : s.getMensualidades()) {
             if (m.getEstado() == EstadoPago.PENDIENTE) {
@@ -100,7 +100,7 @@ public class SuscripcionesController {
                     "Mensualidad pagada: " + String.format("%.2f", pendiente.getImporte()) + " EUR\n"
                     + "Socio: " + s.getSocio().getNombre(), 1);
         } else {
-            // Crear nueva mensualidad y marcarla pagada de inmediato
+            // no hay pendiente, creo una nueva y la marco pagada
             String id = "MEN-" + UUID.randomUUID().toString().substring(0, 5).toUpperCase();
             Mensualidad nueva = new Mensualidad(id, s, s.getImporteMensual(),
                     LocalDate.now().plusMonths(1));

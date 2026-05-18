@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Suscripcion del socio al gimnasio.
- * Agrupa el historico de mensualidades pagadas y los bonos comprados.
+ * Suscripción de un socio, con su historial de mensualidades y bonos.
  */
 public class Suscripcion {
 
@@ -44,11 +43,7 @@ public class Suscripcion {
         this.estado = EstadoSuscripcion.ACTIVA;
     }
 
-    /**
-     * Consume una clase de la suscripcion.
-     * Si quedan clases incluidas en la mensualidad, las descuenta;
-     * si no, intenta descontar de un bono.
-     */
+    /** Descuenta una sesión: primero de las incluidas en el plan, si no de un bono. */
     public boolean consumirClase() {
         if (estado != EstadoSuscripcion.ACTIVA) {
             return false;
@@ -57,7 +52,7 @@ public class Suscripcion {
             sesionesConsumidas++;
             return true;
         }
-        // Sin clases en mensualidad, probar bonos
+        // sin sesiones en el plan, tiro de bonos
         for (BonoSesiones bono : bonosAdicionales) {
             if (bono.consumirSesion()) {
                 return true;

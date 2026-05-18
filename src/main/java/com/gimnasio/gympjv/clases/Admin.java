@@ -16,11 +16,11 @@ public class Admin extends UsuarioSistema {
     }
 
     public void generarReportes() {
-        // La lógica concreta vive en la clase Reportes.
+        // lo hace la clase Reportes
     }
 
     public void gestionarUsuarios() {
-        // Implementado por la capa de controladores y los gestores de datos.
+        // lo hacen los controladores
     }
 
     public void gestionarSocios() {

@@ -4,8 +4,7 @@ import com.gimnasio.gympjv.clases.Socio;
 import com.gimnasio.gympjv.clases.UsuarioSistema;
 
 /**
- * Sesion del usuario autenticado actual.
- * Puede ser un UsuarioSistema (Admin/Monitor) o un Socio.
+ * Guarda quién está logueado: un UsuarioSistema o un Socio, nunca los dos a la vez.
  */
 public final class SesionActual {
 

@@ -17,11 +17,9 @@ import java.sql.Statement;
 import java.util.Map;
 
 /**
- * Controlador de reportes y estadisticas.
- * BarChart: ingresos por tipo de suscripcion (JDBC).
- * PieChart: distribucion de aforo por clase (JDBC).
+ * Reportes: BarChart de ingresos y PieChart de aforo por clase, ambos con JDBC.
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class ReportesController {
 
@@ -34,7 +32,7 @@ public class ReportesController {
     @FXML private BarChart<String, Number> barChart;
     @FXML private PieChart                 pieChart;
 
-    // Paleta dorado/mostaza para forzar colores acordes al tema oscuro.
+    // paleta dorada para que cuadre con el tema oscuro
     private static final String[] PALETA_ORO = {
         "#d4af37", "#e6c247", "#b08a2a", "#8b6f1a",
         "#c79a2e", "#f0d56b", "#a47e2c", "#6d5212"
@@ -98,11 +96,7 @@ public class ReportesController {
             bajTxt.isEmpty() ? "Stock OK" : bajTxt);
     }
 
-    /**
-     * Puebla el BarChart (ingresos por tipo suscripcion)
-     * y el PieChart (aforo por clase) con consultas JDBC.
-     * Si no hay conexion, usa datos del Repositorio.
-     */
+    /** Rellena los gráficos con JDBC; si no hay BD usa el Repositorio. */
     private void actualizarGraficos(Reportes r) {
         barChart.getData().clear();
         pieChart.getData().clear();
@@ -166,11 +160,7 @@ public class ReportesController {
         forzarColoresDorados(series);
     }
 
-    /**
-     * Aplica la paleta dorado/mostaza a cada barra y porcion del PieChart
-     * via setStyle, redundando los estilos CSS para asegurar que ningun
-     * color por defecto (naranja/verde/azul) sobreviva al render.
-     */
+    /** Fuerza los colores dorados en barras y porciones; el CSS por defecto los pisa. */
     private void forzarColoresDorados(
             XYChart.Series<String, Number> serie) {
         int idx = 0;

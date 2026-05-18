@@ -11,10 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane stylesheets="@../css/estilos.css" fx:id="root" prefHeight="700.0" prefWidth="1100.0" styleClass="root-menu"
-            xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.gimnasio.gympjv.MenuMonitorController">
+<BorderPane fx:id="root" prefHeight="700.0" prefWidth="1100.0" styleClass="root-menu" stylesheets="@../css/estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gimnasio.gympjv.MenuMonitorController">
 
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="56.0" spacing="14.0" styleClass="topbar">
@@ -25,14 +22,13 @@
                 <ImageView fitHeight="36.0" fitWidth="36.0" preserveRatio="true">
                     <image><Image url="@../img/logo.png" /></image>
                 </ImageView>
-                <Label styleClass="topbar-titulo" text="Pedro J. Villa App" />
+                <Label styleClass="topbar-titulo" text="Pedro J Villa" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Label fx:id="lblFecha" styleClass="topbar-fecha" text="-" />
                 <Label styleClass="topbar-usuario" text="Monitor:" />
                 <Label fx:id="lblUsuario" styleClass="topbar-usuario-nombre" text="-" />
                 <Label fx:id="lblEspecialidad" styleClass="topbar-rol-valor" text="-" />
-                <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion"
-                        styleClass="btn-cerrar-sesion" text="Cerrar sesion" />
+                <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onAction="#onCerrarSesion" styleClass="btn-cerrar-sesion" text="Cerrar sesion" />
             </children>
         </HBox>
     </top>
@@ -44,20 +40,14 @@
             </padding>
             <children>
                 <Label styleClass="sidebar-seccion" text="MIS CLASES" />
-                <Button fx:id="btnMisClases" mnemonicParsing="false" onAction="#onMisClases"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Mis clases" />
-                <Button fx:id="btnAsistencia" mnemonicParsing="false" onAction="#onAsistencia"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Asistencia" />
-                <Button fx:id="btnReservas" mnemonicParsing="false" onAction="#onReservas"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Reservas" />
+                <Button fx:id="btnMisClases" mnemonicParsing="false" onAction="#onMisClases" prefWidth="175.0" styleClass="btn-sidebar" text="Mis clases" />
+                <Button fx:id="btnAsistencia" mnemonicParsing="false" onAction="#onAsistencia" prefWidth="175.0" styleClass="btn-sidebar" text="Asistencia" />
+                <Button fx:id="btnReservas" mnemonicParsing="false" onAction="#onReservas" prefWidth="175.0" styleClass="btn-sidebar" text="Reservas" />
 
                 <Label styleClass="sidebar-seccion" text="MIS SOCIOS" />
-                <Button fx:id="btnMisSocios" mnemonicParsing="false" onAction="#onMisSocios"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Socios asignados" />
-                <Button fx:id="btnMisDietas" mnemonicParsing="false" onAction="#onMisDietas"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Planes de dieta" />
-                <Button fx:id="btnSesionesPersonales" mnemonicParsing="false" onAction="#onSesionesPersonales"
-                        prefWidth="175.0" styleClass="btn-sidebar" text="Sesiones personales" />
+                <Button fx:id="btnMisSocios" mnemonicParsing="false" onAction="#onMisSocios" prefWidth="175.0" styleClass="btn-sidebar" text="Socios asignados" />
+                <Button fx:id="btnMisDietas" mnemonicParsing="false" onAction="#onMisDietas" prefWidth="175.0" styleClass="btn-sidebar" text="Planes de dieta" />
+                <Button fx:id="btnSesionesPersonales" mnemonicParsing="false" onAction="#onSesionesPersonales" prefWidth="175.0" styleClass="btn-sidebar" text="Sesiones personales" />
             </children>
         </VBox>
     </left>
@@ -65,8 +55,7 @@
     <bottom>
         <AnchorPane prefHeight="28.0" styleClass="footer">
             <children>
-                <Label styleClass="marca-agua-footer" text="Ayoub Atidi Belbaz"
-                       AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0" />
+                <Label styleClass="marca-agua-footer" text="Ayoub Atidi Belbaz" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="6.0" />
             </children>
         </AnchorPane>
     </bottom>

@@ -19,12 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Operaciones JDBC contra MySQL para todas las entidades.
- * REGLA: solo Statement (sin PreparedStatement),
- * SQL por concatenacion de Strings,
- * ResultSet extraido por indice numerico.
+ * Acceso a la BD. Solo Statement, SQL concatenado e índices numéricos
+ * (sin PreparedStatement, regla del profesor).
  *
- * @author Ayoub Atidi Belbaz - 1 DAM
+ * @author Ayoub Atidi Belbaz 1º DAM
  */
 public class GestorBBDD {
 
@@ -37,11 +35,7 @@ public class GestorBBDD {
     // INICIALIZACION DE TABLAS
     // ─────────────────────────────────────────────────────────────────────────
 
-    /**
-     * Crea las tablas de la BD si no existen todavia.
-     * Orden: empleados antes que admins_extra/monitores_extra
-     * (claves foraneas).
-     */
+    /** Crea las tablas si no existen. Empleados va primero por las FK. */
     public static void crearTablas(Connection c) throws SQLException {
         Statement s = c.createStatement();
 
@@ -126,10 +120,7 @@ public class GestorBBDD {
         s.close();
     }
 
-    /**
-     * Comprueba si la tabla indicada esta vacia.
-     * Se usa para saber si hay que insertar datos de demo.
-     */
+    /** Devuelve true si la tabla está vacía (para saber si toca insertar el demo). */
     public static boolean estaVacia(Connection c, String tabla)
             throws SQLException {
         Statement s = c.createStatement();
@@ -146,11 +137,7 @@ public class GestorBBDD {
     // INSERCION DE DATOS DE DEMO
     // ─────────────────────────────────────────────────────────────────────────
 
-    /**
-     * Popula todas las tablas con los datos de demo equivalentes
-     * al metodo Repositorio.cargarDemo(). Solo se llama si la BD
-     * esta vacia (primera ejecucion).
-     */
+    /** Inserta los datos de demo en la BD. Solo se llama la primera vez. */
     public static void insertarDatosDemo(Connection c)
             throws SQLException {
         insertarDemoEmpleados(c);
@@ -329,12 +316,7 @@ public class GestorBBDD {
     // LECTURA (CARGA EN MEMORIA)
     // ─────────────────────────────────────────────────────────────────────────
 
-    /**
-     * Carga todos los socios desde la tabla socios.
-     * Columnas: 1=id, 2=nombre, 3=telefono, 4=email,
-     *           5=fecha_alta, 6=qr_code, 7=login,
-     *           8=password, 9=puntos
-     */
+    /** Carga todos los socios de la tabla socios. */
     public static List<Socio> cargarSocios(Connection c)
             throws SQLException {
         List<Socio> lista = new ArrayList<>();
@@ -364,12 +346,7 @@ public class GestorBBDD {
         return lista;
     }
 
-    /**
-     * Carga todos los admins (JOIN empleados + admins_extra).
-     * Columnas: 1=id, 2=nombre, 3=telefono, 4=email,
-     *           5=fecha_alta, 6=salario_base, 7=horario,
-     *           8=login, 9=password
-     */
+    /** Carga admins (JOIN empleados + admins_extra). */
     public static List<Admin> cargarAdmins(Connection c)
             throws SQLException {
         List<Admin> lista = new ArrayList<>();
@@ -401,12 +378,7 @@ public class GestorBBDD {
         return lista;
     }
 
-    /**
-     * Carga todos los monitores (JOIN empleados + monitores_extra).
-     * Columnas: 1=id, 2=nombre, 3=telefono, 4=email,
-     *           5=fecha_alta, 6=salario_base, 7=horario,
-     *           8=login, 9=password, 10=especialidad
-     */
+    /** Carga monitores (JOIN empleados + monitores_extra). */
     public static List<Monitor> cargarMonitores(Connection c)
             throws SQLException {
         List<Monitor> lista = new ArrayList<>();
@@ -439,12 +411,7 @@ public class GestorBBDD {
         return lista;
     }
 
-    /**
-     * Carga los empleados de tipo EMPLEADO (sin credenciales
-     * de acceso al sistema: peluqueros, etc.).
-     * Columnas: 1=id, 2=nombre, 3=telefono, 4=email,
-     *           5=fecha_alta, 6=salario_base, 7=horario
-     */
+    /** Carga empleados de tipo EMPLEADO (peluqueros, sin login). */
     public static List<Empleado> cargarEmpleadosBase(Connection c)
             throws SQLException {
         List<Empleado> lista = new ArrayList<>();
@@ -471,11 +438,7 @@ public class GestorBBDD {
         return lista;
     }
 
-    /**
-     * Carga todos los productos del catalogo.
-     * Columnas: 1=id_producto, 2=nombre, 3=precio_venta,
-     *           4=stock, 5=stock_minimo
-     */
+    /** Carga todos los productos del catálogo. */
     public static List<Producto> cargarProductos(Connection c)
             throws SQLException {
         List<Producto> lista = new ArrayList<>();
@@ -498,11 +461,7 @@ public class GestorBBDD {
         return lista;
     }
 
-    /**
-     * Carga las suscripciones y las vincula al socio correspondiente.
-     * Columnas: 1=id, 2=id_socio, 3=tipo, 4=precio,
-     *           5=fecha_inicio, 6=fecha_fin, 7=clases_incluidas
-     */
+    /** Carga suscripciones y las vincula al socio. */
     public static List<Suscripcion> cargarSuscripciones(
             Connection c, List<Socio> socios) throws SQLException {
         List<Suscripcion> lista = new ArrayList<>();
@@ -533,11 +492,7 @@ public class GestorBBDD {
         return lista;
     }
 
-    /**
-     * Carga las clases grupales y las vincula al monitor.
-     * Columnas: 1=id_clase, 2=nombre, 3=fecha_hora,
-     *           4=id_monitor, 5=aforo_maximo, 6=ocupacion_actual
-     */
+    /** Carga clases grupales y las vincula al monitor. */
     public static List<ClaseGrupal> cargarClases(
             Connection c, List<Monitor> monitores)
             throws SQLException {

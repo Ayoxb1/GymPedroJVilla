@@ -1,0 +1,29 @@
+sequenceDiagram
+    actor Usuario
+    participant IS  as InicioSesionController
+    participant REP as Repositorio
+    participant SA  as SesionActual
+    participant APP as App
+
+    Usuario ->> IS: introducir login + password
+    IS ->> REP: buscarUsuarioPorLogin(login)
+    alt UsuarioSistema encontrado
+        REP -->> IS: Admin o Monitor
+        IS ->> IS: comprobarPassword()
+        IS ->> SA: setUsuario(u)
+        alt es Monitor
+            IS ->> IS: MenuMonitorController.datosEntrada(monitor)
+            IS ->> APP: cambiarVista("MenuMonitor")
+        else es Admin
+            IS ->> APP: cambiarVista("Menu")
+        end
+    else no encontrado → busca Socio
+        IS ->> REP: buscarSocioPorLogin(login)
+        REP -->> IS: Socio o null
+        alt Socio encontrado
+            IS ->> SA: setSocio(socio)
+            IS ->> APP: cambiarVista("MenuSocio")
+        else no encontrado
+            IS ->> Usuario: warning("Usuario o contraseña incorrectos")
+        end
+    end

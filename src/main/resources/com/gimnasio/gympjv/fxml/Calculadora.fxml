@@ -7,220 +7,102 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane stylesheets="@../css/estilos.css"
-           styleClass="vista-modulo"
-           alignment="CENTER"
-           xmlns="http://javafx.com/javafx/21"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.gimnasio.gympjv.CalculadoraController">
+<StackPane alignment="CENTER" styleClass="vista-modulo" stylesheets="@../css/estilos.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gimnasio.gympjv.CalculadoraController">
     <children>
-        <AnchorPane prefHeight="470.0" prefWidth="470.0"
-                    maxHeight="470.0" maxWidth="470.0"
-                    StackPane.alignment="CENTER">
+        <AnchorPane maxHeight="470.0" maxWidth="470.0" prefHeight="470.0" prefWidth="470.0" StackPane.alignment="CENTER">
             <children>
-                <TextField fx:id="campoPantalla"
-                           alignment="CENTER_RIGHT" editable="false"
-                           layoutX="7.0" layoutY="10.0"
-                           prefHeight="60.0" prefWidth="456.0">
+                <TextField fx:id="campoPantalla" alignment="CENTER_RIGHT" editable="false" layoutX="7.0" layoutY="10.0" prefHeight="60.0" prefWidth="456.0">
                     <font>
                         <Font size="24.0" />
                     </font>
                 </TextField>
-                <Label fx:id="etiquetaError"
-                       layoutX="7.0" layoutY="74.0"
-                       prefWidth="456.0" textFill="RED" />
+                <Label fx:id="etiquetaError" layoutX="7.0" layoutY="74.0" prefWidth="456.0" textFill="RED" />
 
-                <Button fx:id="botonSeno"
-                        layoutX="7.0" layoutY="100.0"
-                        mnemonicParsing="false" onAction="#pulsarFuncion"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="sin" userData="sen">
+                <Button fx:id="botonSeno" layoutX="7.0" layoutY="100.0" mnemonicParsing="false" onAction="#pulsarFuncion" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="sin" userData="sen">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonCoseno"
-                        layoutX="98.0" layoutY="100.0"
-                        mnemonicParsing="false" onAction="#pulsarFuncion"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="cos" userData="cos">
+                <Button fx:id="botonCoseno" layoutX="98.0" layoutY="100.0" mnemonicParsing="false" onAction="#pulsarFuncion" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="cos" userData="cos">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonTangente"
-                        layoutX="189.0" layoutY="100.0"
-                        mnemonicParsing="false" onAction="#pulsarFuncion"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="tan" userData="tan">
+                <Button fx:id="botonTangente" layoutX="189.0" layoutY="100.0" mnemonicParsing="false" onAction="#pulsarFuncion" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="tan" userData="tan">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonRaiz"
-                        layoutX="280.0" layoutY="100.0"
-                        mnemonicParsing="false" onAction="#pulsarFuncion"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="raiz" userData="raiz">
+                <Button fx:id="botonRaiz" layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onAction="#pulsarFuncion" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="raiz" userData="raiz">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonLogaritmo"
-                        layoutX="371.0" layoutY="100.0"
-                        mnemonicParsing="false" onAction="#pulsarFuncion"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="ln" userData="logaritmo">
+                <Button fx:id="botonLogaritmo" layoutX="371.0" layoutY="100.0" mnemonicParsing="false" onAction="#pulsarFuncion" prefHeight="55.0" prefWidth="134.0" styleClass="btn-secondary" text="ln" userData="logaritmo">
                     <font><Font size="18.0" /></font>
                 </Button>
 
-                <Button fx:id="botonPotencia"
-                        layoutX="7.0" layoutY="160.0"
-                        mnemonicParsing="false" onAction="#pulsarFuncion"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="x2" userData="potencia">
+                <Button fx:id="botonPotencia" layoutX="7.0" layoutY="160.0" mnemonicParsing="false" onAction="#pulsarFuncion" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="x2" userData="potencia">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonPi"
-                        layoutX="98.0" layoutY="160.0"
-                        mnemonicParsing="false" onAction="#pulsarConstante"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="pi" userData="pi">
+                <Button fx:id="botonPi" layoutX="98.0" layoutY="160.0" mnemonicParsing="false" onAction="#pulsarConstante" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="pi" userData="pi">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonEuler"
-                        layoutX="189.0" layoutY="160.0"
-                        mnemonicParsing="false" onAction="#pulsarConstante"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="e" userData="euler">
+                <Button fx:id="botonEuler" layoutX="189.0" layoutY="160.0" mnemonicParsing="false" onAction="#pulsarConstante" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="e" userData="euler">
                     <font><Font size="18.0" /></font>
                 </Button>
-                <Button fx:id="botonPorcentaje"
-                        layoutX="280.0" layoutY="160.0"
-                        mnemonicParsing="false" onAction="#pulsarPorcentaje"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="\%" userData="porcentaje">
+                <Button fx:id="botonPorcentaje" layoutX="280.0" layoutY="160.0" mnemonicParsing="false" onAction="#pulsarPorcentaje" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="\%" userData="porcentaje">
                     <font><Font size="14.0" /></font>
                 </Button>
-                <Button fx:id="botonLimpiar"
-                        layoutX="371.0" layoutY="160.0"
-                        mnemonicParsing="false" onAction="#pulsarLimpiar"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-danger" text="C">
+                <Button fx:id="botonLimpiar" layoutX="390.0" layoutY="160.0" minWidth="78.0" mnemonicParsing="false" onAction="#pulsarLimpiar" prefHeight="55.0" prefWidth="78.0" styleClass="btn-danger" text="C">
                     <font><Font size="18.0" /></font>
                 </Button>
 
-                <Button fx:id="botonSiete"
-                        layoutX="7.0" layoutY="220.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="7">
+                <Button fx:id="botonSiete" layoutX="7.0" layoutY="220.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="7">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonOcho"
-                        layoutX="98.0" layoutY="220.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="8">
+                <Button fx:id="botonOcho" layoutX="98.0" layoutY="220.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="8">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonNueve"
-                        layoutX="189.0" layoutY="220.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="9">
+                <Button fx:id="botonNueve" layoutX="189.0" layoutY="220.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="9">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonDivision"
-                        layoutX="280.0" layoutY="220.0"
-                        mnemonicParsing="false" onAction="#pulsarOperador"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="/">
+                <Button fx:id="botonDivision" layoutX="280.0" layoutY="220.0" mnemonicParsing="false" onAction="#pulsarOperador" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="/">
                     <font><Font size="28.0" /></font>
                 </Button>
 
-                <Button fx:id="botonCuatro"
-                        layoutX="7.0" layoutY="280.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="4">
+                <Button fx:id="botonCuatro" layoutX="7.0" layoutY="280.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="4">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonCinco"
-                        layoutX="98.0" layoutY="280.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="5">
+                <Button fx:id="botonCinco" layoutX="98.0" layoutY="280.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="5">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonSeis"
-                        layoutX="189.0" layoutY="280.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="6">
+                <Button fx:id="botonSeis" layoutX="189.0" layoutY="280.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="6">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonMultiplicacion"
-                        layoutX="280.0" layoutY="280.0"
-                        mnemonicParsing="false" onAction="#pulsarOperador"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="*">
+                <Button fx:id="botonMultiplicacion" layoutX="280.0" layoutY="280.0" mnemonicParsing="false" onAction="#pulsarOperador" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="*">
                     <font><Font size="28.0" /></font>
                 </Button>
 
-                <Button fx:id="botonUno"
-                        layoutX="7.0" layoutY="340.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="1">
+                <Button fx:id="botonUno" layoutX="7.0" layoutY="340.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="1">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonDos"
-                        layoutX="98.0" layoutY="340.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="2">
+                <Button fx:id="botonDos" layoutX="98.0" layoutY="340.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="2">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonTres"
-                        layoutX="189.0" layoutY="340.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="3">
+                <Button fx:id="botonTres" layoutX="189.0" layoutY="340.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="3">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonResta"
-                        layoutX="280.0" layoutY="340.0"
-                        mnemonicParsing="false" onAction="#pulsarOperador"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="-">
+                <Button fx:id="botonResta" layoutX="280.0" layoutY="340.0" mnemonicParsing="false" onAction="#pulsarOperador" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="-">
                     <font><Font size="28.0" /></font>
                 </Button>
 
-                <Button fx:id="botonCero"
-                        layoutX="7.0" layoutY="400.0"
-                        mnemonicParsing="false" onAction="#pulsarNumero"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="0">
+                <Button fx:id="botonCero" layoutX="7.0" layoutY="400.0" mnemonicParsing="false" onAction="#pulsarNumero" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="0">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonDecimal"
-                        layoutX="98.0" layoutY="400.0"
-                        mnemonicParsing="false" onAction="#pulsarDecimal"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text=".">
+                <Button fx:id="botonDecimal" layoutX="98.0" layoutY="400.0" mnemonicParsing="false" onAction="#pulsarDecimal" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text=".">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonIgual"
-                        layoutX="189.0" layoutY="400.0"
-                        mnemonicParsing="false" onAction="#pulsarIgual"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-primary" text="=">
+                <Button fx:id="botonIgual" layoutX="189.0" layoutY="400.0" mnemonicParsing="false" onAction="#pulsarIgual" prefHeight="55.0" prefWidth="86.0" styleClass="btn-primary" text="=">
                     <font><Font size="28.0" /></font>
                 </Button>
-                <Button fx:id="botonSuma"
-                        layoutX="280.0" layoutY="400.0"
-                        mnemonicParsing="false" onAction="#pulsarOperador"
-                        prefHeight="55.0" prefWidth="86.0"
-                        styleClass="btn-secondary" text="+">
+                <Button fx:id="botonSuma" layoutX="280.0" layoutY="400.0" mnemonicParsing="false" onAction="#pulsarOperador" prefHeight="55.0" prefWidth="86.0" styleClass="btn-secondary" text="+">
                     <font><Font size="28.0" /></font>
                 </Button>
 
-                <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz"
-                       AnchorPane.bottomAnchor="6.0"
-                       AnchorPane.rightAnchor="14.0" />
+                <Label styleClass="marca-agua" text="Ayoub Atidi Belbaz" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="14.0" />
             </children>
         </AnchorPane>
     </children>

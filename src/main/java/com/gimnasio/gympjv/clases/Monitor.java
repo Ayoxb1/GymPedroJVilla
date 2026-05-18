@@ -25,15 +25,15 @@ public class Monitor extends UsuarioSistema {
     }
 
     public void crearRutina(Socio socio) {
-        // Logica especifica de creacion de rutina (delegada a controlador o servicio).
+        // sin implementar aquí, lo gestiona el controlador
     }
 
     public void asignarDieta(Socio socio) {
-        // El monitor crea un PlanDieta y se lo asigna al socio.
+        // sin implementar aquí
     }
 
     public void registrarAsistencia(Socio socio) {
-        // Marca la asistencia del socio en la clase actual.
+        // sin implementar aquí
     }
 
     public List<Reserva> consultarReservas() {
